@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rentals - Construction Solution</title>
+    <title>Construction Solutions</title>
     <style>
-        /* Global Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            overflow: visible;
-            width: 100%;
-            align-items: center;
-            background-image: url('1.jpg'); /* Add your background image here */
+            box-sizing: border-box;
         }
-    
+
+        .white-box {
+            background-color: rgb(255, 255, 255);
+            border: 2px solid #004AAD;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
         .navbar {
             background-color: #004AAD;
             color: white;
@@ -27,29 +28,25 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%;
-            box-sizing: border-box;
-            margin-top: 0; /* Adjusted margin-top value */
-            margin-bottom: 100px;
         }
-    
+
         .navbar img {
             height: 50px;
         }
-    
+
         .navbar .left-links,
         .navbar .right-links {
             display: flex;
             align-items: center;
         }
-    
+
         .navbar .left-links a,
         .navbar .right-links a {
             color: white;
             text-decoration: none;
             margin: 0 1rem;
         }
-    
+
         .navbar button {
             background-color: white;
             color: #004AAD;
@@ -58,51 +55,203 @@
             border-radius: 5px;
             cursor: pointer;
         }
-    
-        .login {
-            background-color: #105192;
-            color: #010b13;
-            padding: 5px 10px;
-            border-radius: 4px;
-            text-decoration: none;
-            border: 1px solid #e6ebf0;
+
+        .hero {
+            background: url('Background.jpg') no-repeat center center/cover;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
         }
-    
+
+        .hero img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin: 1rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero button {
+            background-color: #D2153D;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            background: url('image4.jpg') no-repeat center center/cover;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            background-color: white;
+            color: #004AAD;
+        }
+
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(83, 82, 82, 0.5); /* Adjust the opacity here */
+            z-index: 1;
+        }
+
+        .content-left,
+        .content-right {
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .content-left div {
+            height: 200px;
+            width: 200px;
+            margin: 0 2.5rem;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .content-left div:nth-child(1) {
+            background-color: #004AAD;
+            color: white;
+        }
+
+        .content-left div:nth-child(2) {
+            background-color: #D2153D;
+            color: white;
+        }
+
+        .content-left div h2 {
+            font-size: 6rem;
+            margin: 0;
+        }
+
+        .content-left div p {
+            margin: 0;
+        }
+
+        .content-right {
+            width: 50%;
+        }
+
+        .content-right h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .service {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .service img {
+            background-color: rgb(255, 255, 255);
+            padding: 0.5rem;
+            margin-right: 1rem;
+            width: 50px;
+            height: 50px;
+            border: 2px solid #004AAD;
+            box-sizing: border-box;
+        }
+
+        .additional-content {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            background: url('background2.jpg') no-repeat center center/cover;
+            color: #004AAD;
+        }
+
+        .additional-content div {
+            flex: 1;
+            margin: 0 1rem;
+            padding: 1rem;
+            background-color: rgba(67, 67, 67, 0.7);
+            border-radius: 5px;
+        }
+
+        .additional-content h3 {
+            font-size: 2.5rem;
+            color: #D2153D;
+        }
+
+        .additional-content p {
+            color: white;
+        }
+
         footer {
             background-color: #004AAD;
             color: white;
             display: flex;
             justify-content: space-between;
             padding: 20px;
-            width: 100%;
-            margin-top: 40px;
         }
-    
+
         .footer-section {
             flex: 1;
             padding: 10px;
         }
-    
+
         .footer-section h3 {
             margin-top: 0;
             font-size: 1.2em;
         }
-    
+
         .footer-section p {
             margin: 5px 0;
         }
-    
-        .footer-logo {
-            width: 175px; /* Adjust the width as needed */
-            height: auto; /* Maintain aspect ratio */
-        }
-    
+
         .social-icons {
             display: flex;
             justify-content: center;
             margin-top: 10px;
         }
-    
+
         .social-icons a {
             color: white;
             margin: 0 10px;
@@ -110,194 +259,146 @@
             display: flex;
             align-items: center;
         }
-    
+
+        .forlogo {
+            display: flex;
+            height: 120px;
+            width: 100px;
+        }
+
         .social-icons a img {
             height: 20px;
             margin-right: 5px;
         }
-    
+
         @media (min-width: 768px) {
             .hero h1 {
                 font-size: 6rem;
             }
-    
+
             .hero p {
                 font-size: 1.5rem;
             }
         }
-    
-        /* Specific styles for the login page */
-        .login-container {
-            background-color: #105192;
-            padding: 20px 40px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            text-align: center;
-            width: 400px;
-            max-height: 80vh; /* Ensure it doesn't go beyond viewport height */
-            overflow-y: auto; /* Make it scrollable */
-            margin-top: 40px; /* Add margin to separate from the navbar */
-        }
-    
-        h2 {
-            margin-bottom: 20px;
-            color: #fdf9f9;
-        }
-    
-        .input-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-    
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #fdfafa;
-        }
-    
-        input {
-            width: 95%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-    
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    
-        button:hover {
-            background-color: #218838;
-        }
-    
-        .social-login {
-            margin-top: 20px;
-        }
-    
-        .social-login p {
-            margin-bottom: 10px;
-            color: #fffbfb;
-        }
-    
-        .social-login button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: bold;
-        }
-    
-        .social-login img {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-        }
-    
-        .social-login .facebook {
-            background-color: #3b5998;
-            color: #fff;
-        }
-    
-        .social-login .gmail {
-            background-color: #db4437;
-            color: #fff;
-        }
-    
-        .social-login .apple {
-            background-color: #000;
-            color: #fff;
-        }
-    
-        .social-login button:hover {
-            opacity: 0.9;
-        }
     </style>
-    </head>
-    <body>
-        <nav class="navbar">
-            <div class="left-links">
-                <img src="logo.png" alt="Logo">
-                <a href="#">SUPPORT</a>
-                <a href="#">PARTNERS</a>
-                <a href="#">CAREERS</a>
-            </div>
-            <div class="right-links">
-                <a href="Index.html">Home</a>
-                <a href="Projects.html">Projects</a>
-                <a href="rentals.html">Rentals</a>
-                <a href="Apply.html">Apply</a>
-                <a href="Contact.html">Contacts</a>
-                <a href="login.html" class="login">Login</a>
-            </div>
-        </nav>
-    
-        <div class="login-container">
-            <h2>Login</h2>
-            <form action="#" method="POST">
-                <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit"><br>Login</button>
-            </form>
+</head>
 
+<body>
+    <nav class="navbar">
+        <div class="left-links">
+            <img src="LOGO.png" alt="Logo">
+            <a href="#">SUPPORT</a>
+            <a href="#">PARTNERS</a>
+            <a href="#">CAREERS</a>
         </div>
-        <br><br><br><br><br><br><br><br>
-        <footer>
-            <div class="footer-section">
-                <img src="LOGO.png" alt="Logo" class="footer-logo">
+        <div class="right-links">
+            <a href="Index.html">Home</a>
+            <a href="Projects.html">Our Projects</a>
+            <a href="rentals.html">Rentals</a>
+            <a href="Apply.html">Apply</a>
+            <a href="Contact.html">Contacts</a>
+            <a href="login.html" class="login">Login</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Construction solution for everyone</h1>
+        <p>In id enim odio. Nunc aliquet diam tortor, at venenatis urna sagittis non. Suspendisse sodales nulla sit amet sem condimentum, ac euismod nibh elementum. Praesent eu urna et sem sodales venenatis. Mauris efficitur dapibus enim in posuere.</p>
+        <button>Learn more →</button>
+    </section>
+
+    <section class="content">
+        <div class="content-left">
+            <div style="background-color: #004AAD;">
+                <h2>147</h2>
+                <p>Completed Projects</p>
             </div>
-            <div class="footer-section">
-                <p>PUNTA, DIPOLOG CITY</p>
-                <p>ZAMBOANGA DEL NORTE</p>
-                <p>Mailing Address:</p>
-                <p>PUNTA, DIPOLOG CITY</p>
-                <p>ZAMBOANGA DEL NORTE</p>
-                <p>09994801639</p>
+            <div style="background-color: #D2153D;">
+                <h2>25+</h2>
+                <p>Years of Experience</p>
             </div>
-            <div class="footer-section">
-                <br>
-                <br>
-                <br><br>
-                <br>
-                <p style="text-align: center; font-size: 9px;">NORTH SALT LAKE&emsp;ST. GEORGE/WASHINGTON&emsp;CEDAR CITY&emsp;DIPOLOG,PHILIPPINES</p>
-                <hr style="border-top: 1px solid white;">
-                <div style="display: flex; justify-content: center;">
-                    <a href="#" style="color: white; text-decoration: none; margin-right: 20px; font-size: 11px;">PRIVACY POLICY</a>
-                    <span style="color: white;">|</span>
-                    <a href="#" style="color: white; text-decoration: none; margin-left: 20px; font-size: 11px;">SITE MAP</a>
-                </div>
-                <p style="text-align: center; font-size: 11px;">© YOZECH CONSTRUCTION</p>
-            </div>
-            <div class="footer-section">
-                <p>Contact</p>
-                <p>Subcontractors</p>
-                <p>Employee Portal</p>
-                <p>Careers</p>
-                <hr>
-                <div class="social-icons">
-                    <a href="#"><img src="twitter.png" alt="Twitter">Twitter</a>
-                    <a href="#"><img src="facebook.png" alt="Facebook">Facebook</a>
-                    <a href="#"><img src="instagram.png" alt="Instagram">Instagram</a>
-                    <a href="#"><img src="youtube.png" alt="YouTube">YouTube</a>
+        </div>
+        <div class="content-right">
+            <div class="white-box">
+            <h2>We Construct and Manage Places and Infrastructures</h2>
+            <div class="service">
+                <img src="Shape.png" alt="General Contract">
+                <div>
+                    <h3>General Contract</h3>
+                    <p>Quisque condimentum erat ac orci blandit, in sollicitudin tellus vestibulum.</p>
                 </div>
             </div>
-        </footer>
-    </body>
-    </html>
+            <div class="service">
+                <img src="Shape2.png" alt="Project Planning">
+                <div>
+                    <h3>Project Planning</h3>
+                    <p>Nullam commodo tincidunt nisl, nec vehicula dui interdum nec.</p>
+                </div>
+            </div>
+            <div class="service">
+                <img src="Shape3.png" alt="Refurbishment">
+                <div>
+                    <h3>Refurbishment</h3>
+                    <p>Sed vitae aliquet ipsum, ut ornare lectus. Proin sed sem risus. Sed nunc.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section class="additional-content">
+        <div>
+            <h3 style="color: #F67926; font-size: 1.5rem;">Construction</h3>
+            <p style="color: white;">Our project managers and superintendents are very experienced in completing highly specialized, multi-faceted projects. Their ability to foresee and therefore prevent problems is invaluable. Construction mastery aids in the design process of the CM/GC and Design-Build delivery methods because we know what is feasible and have a large repertoire of means and methods. Yoztech is uniquely qualified in tilt-up concrete construction. We know what is feasible and we have the means and methods to accomplish the goal.</p>
+        </div>
+        <div>
+            <h3 style="color: #F67926; font-size: 1.5rem;">Engineering</h3>
+            <p style="color: white;">Our engineers and designers are qualified to solve the challenges presented in today's design and construction market. We have experience in a variety of projects and delivery methods. We know what is feasible and we have the means and methods to accomplish the goal.</p>
+        </div>
+        <div>
+            <h3 style="color: #F67926; font-size: 1.5rem;">Innovation</h3>
+            <p style="color: white;">We are committed to continually learning and improving. This pursuit of knowledge drives our team to innovative solutions. We are innovative and will draw on all of our resources to find solutions to meet owner needs, even if that means inventing something new.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="forlogo">
+            <img src="LOGO.png">
+        </div>
+        <div class="footer-section">
+            <p style="margin-left: 100px;">PUNTA, DIPOLOG CITY</p>
+            <p style="margin-left: 100px;">ZAMBOANGA DEL NORTE</p>
+            <p style="margin-left: 100px;">Mailing Address:</p>
+            <p style="margin-left: 100px;">PUNTA, DIPOLOG CITY</p>
+            <p style="margin-left: 100px;">ZAMBOANGA DEL NORTE</p>
+            <p style="margin-left: 100px;">09994801639</p>
+        </div>
+        <div class="footer-section">
+            <br>
+            <br>
+            <br><br>
+            <p style="text-align: center; font-size: 9px;">NORTH SALT LAKE&emsp;ST. GEORGE/WASHINGTON&emsp;CEDAR CITY&emsp;DIPOLOG,PHILIPPINES</p>
+            <hr style="border-top: 1px solid white;">
+            <div style="display: flex; justify-content: center;">
+                <a href="#" style="color: white; text-decoration: none; margin-right: 20px; font-size: 11px;">PRIVACY POLICY</a>
+                <span style="color: white;">|</span>
+                <a href="#" style="color: white; text-decoration: none; margin-left: 20px; font-size: 11px;">SITE MAP</a>
+            </div>
+            <p style="text-align: center; font-size: 11px;">© YOZECH CONSTRUCTION</p>
+        </div>
+        <div class="footer-section">
+            <p>Contact</p>
+            <p>Subcontractors</p>
+            <p>Employee Portal</p>
+            <p>Careers</p>
+            <hr>
+            <div class="social-icons">
+                <a href="#"><img src="twitter.png" alt="Twitter">Twitter</a>
+                <a href="#"><img src="facebook.png" alt="Facebook">Facebook</a>
+                <a href="#"><img src="instagram.png" alt="Instagram">Instagram</a>
+                <a href="#"><img src="youtube.png" alt="YouTube">YouTube</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
