@@ -23,38 +23,41 @@
 
         .navbar {
             background-color: #004AAD;
-            color: white;
-            padding: 1rem;
+            padding: 1rem 0;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
         }
 
-        .navbar img {
-            height: 50px;
-        }
-
-        .navbar .left-links,
-        .navbar .right-links {
+        .navbar-center {
             display: flex;
             align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        .navbar .left-links a,
-        .navbar .right-links a {
+        .logo-centered {
+            height: 70px; 
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
             color: white;
             text-decoration: none;
-            margin: 0 1rem;
+            font-weight: bold;
+            font-size: 1rem;
         }
 
-        .navbar button {
-            background-color: white;
-            color: #004AAD;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
+        .nav-links a:hover {
+            text-decoration: underline;
         }
+
 
         .contact-section {
             padding: 4rem 2rem;
@@ -170,21 +173,19 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="left-links">
-            <img src="LOGO.png" alt="Logo">
-            <a href="#">SUPPORT</a>
-            <a href="#">PARTNERS</a>
-            <a href="#">CAREERS</a>
-        </div>
-        <div class="right-links">
-            <a href="Index.html">Home</a>
-            <a href="Projects.html">Projects</a>
-            <a href="rentals.html">Rentals</a>
-            <a href="Apply.html">Apply</a>
-            <a href="Contact.html">Contacts</a>
-            <a href="login.html" class="login">Login</a>
+        <div class="navbar-center">
+            <img src="LOGO.png" alt="Logo" class="logo-centered">
+            <div class="nav-links">
+                <a href="Index.html">Home</a>
+                <a href="Projects.html">Projects</a>
+                <a href="rentals.html">Rentals</a>
+                <a href="Apply.html">Apply</a>
+                <a href="Contact.html">Contacts</a>
+                <a href="login.html" class="login">Login</a>
+            </div>
         </div>
     </nav>
+
 
     <section class="contact-section">
         <div class="contact-form">

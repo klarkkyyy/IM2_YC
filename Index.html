@@ -21,39 +21,42 @@
             border-radius: 8px;
         }
 
+        
         .navbar {
-            background-color: #004AAD;
-            color: white;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        background-color: #004AAD;
+        padding: 1rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         }
 
-        .navbar img {
-            height: 50px;
+        .navbar-center {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
         }
 
-        .navbar .left-links,
-        .navbar .right-links {
-            display: flex;
-            align-items: center;
+        .logo-centered {
+        height: 70px; 
         }
 
-        .navbar .left-links a,
-        .navbar .right-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1rem;
+        .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
         }
 
-        .navbar button {
-            background-color: white;
-            color: #004AAD;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
+        .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+        text-decoration: underline;
         }
 
         .hero {
@@ -115,7 +118,6 @@
         .content {
             position: relative;
             background: url('image4.jpg') no-repeat center center/cover;
-
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -131,7 +133,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(83, 82, 82, 0.5); /* Adjust the opacity here */
+            background: rgba(83, 82, 82, 0.5);
             z-index: 1;
         }
 
@@ -279,32 +281,33 @@
             .hero p {
                 font-size: 1.5rem;
             }
+
+            .navbar .left-links a,
+            .navbar .right-links a {
+                margin: 0 1.5rem;
+            }
         }
     </style>
 </head>
-
 <body>
+
     <nav class="navbar">
-        <div class="left-links">
-            <img src="LOGO.png" alt="Logo">
-            <a href="#">SUPPORT</a>
-            <a href="#">PARTNERS</a>
-            <a href="#">CAREERS</a>
-        </div>
-        <div class="right-links">
+    <div class="navbar-center">
+        <img src="LOGO.png" alt="Logo" class="logo-centered">
+        <div class="nav-links">
             <a href="Index.html">Home</a>
-            <a href="Projects.html">Our Projects</a>
+            <a href="Projects.html">Projects</a>
             <a href="rentals.html">Rentals</a>
             <a href="Apply.html">Apply</a>
             <a href="Contact.html">Contacts</a>
             <a href="login.html" class="login">Login</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <section class="hero">
-        <h1>Construction solution for everyone</h1>
-        <p>In id enim odio. Nunc aliquet diam tortor, at venenatis urna sagittis non. Suspendisse sodales nulla sit amet sem condimentum, ac euismod nibh elementum. Praesent eu urna et sem sodales venenatis. Mauris efficitur dapibus enim in posuere.</p>
-        <button>Learn more →</button>
+        <h1>Welcome to Yosech Construction</h1>
+        <p>Yosech Construction is a trusted construction firm based in Dipolog City, delivering high-quality road infrastructure, residential and commercial buildings, flood control <br>projects, and reliable equipment rentals. With decades of experience, we blend traditional craftsmanship with modern techniques to create structures that stand the test <br>of time while embracing sustainability and cultural authenticity.</p>
     </section>
 
     <section class="content">
@@ -320,30 +323,37 @@
         </div>
         <div class="content-right">
             <div class="white-box">
-            <h2>We Construct and Manage Places and Infrastructures</h2>
-            <div class="service">
-                <img src="Shape.png" alt="General Contract">
-                <div>
-                    <h3>General Contract</h3>
-                    <p>Quisque condimentum erat ac orci blandit, in sollicitudin tellus vestibulum.</p>
+                <h2>We Construct and Manage Places and Infrastructures</h2>
+                <div class="service">
+                    <img src="Shape.png" alt="General Contract">
+                    <div>
+                        <h3>Road Construction & Infrastructure Projects</h3>
+                        <p>We build durable roads and vital infrastructure that connect communities.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="service">
-                <img src="Shape2.png" alt="Project Planning">
-                <div>
-                    <h3>Project Planning</h3>
-                    <p>Nullam commodo tincidunt nisl, nec vehicula dui interdum nec.</p>
+                <div class="service">
+                    <img src="Shape2.png" alt="Project Planning">
+                    <div>
+                        <h3>Residential & Commercial Building Construction</h3>
+                        <p>From homes to businesses, we create safe and modern spaces for living and working.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="service">
-                <img src="Shape3.png" alt="Refurbishment">
-                <div>
-                    <h3>Refurbishment</h3>
-                    <p>Sed vitae aliquet ipsum, ut ornare lectus. Proin sed sem risus. Sed nunc.</p>
+                <div class="service">
+                    <img src="Shape3.png" alt="Refurbishment">
+                    <div>
+                        <h3>Flood Control & Drainage Solutions</h3>
+                        <p>Our projects protect communities with reliable flood control and drainage systems.</p>
+                    </div>
+                </div>
+                <div class="service">
+                    <img src="Shape2.png" alt="Refurbishment">
+                    <div>
+                        <h3>Heavy Equipment Rentals</h3>
+                        <p>Rent high-quality construction equipment for your projects with ease and confidence.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </section>
 
     <section class="additional-content">

@@ -1,418 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
-    <style>
-        /* Global Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            overflow: visible;
-            width: 100%;
-            align-items: center;
-            background-image: url('1.jpg'); /* Add your background image here */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects - Construction Solution</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      background-image: url('1.jpg');
+      background-size: cover;
+      background-position: center;
+    }
 
-        .navbar {
-            background-color: #004AAD;
-            color: white;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            box-sizing: border-box;
-            margin-top: 0; /* Adjusted margin-top value */
-            margin-bottom: 100px;
-        }
+    .navbar {
+      background-color: #004AAD;
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .navbar img {
-            height: 50px;
-        }
+    .navbar-center {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-        .navbar .left-links,
-        .navbar .right-links {
-            display: flex;
-            align-items: center;
-        }
+    .logo-centered {
+      height: 70px; 
+    }
 
-        .navbar .left-links a,
-        .navbar .right-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1rem;
-        }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
 
-        .navbar button {
-            background-color: white;
-            color: #004AAD;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+    }
 
-        .login {
-            background-color: #105192;
-            color: #010b13;
-            padding: 5px 10px;
-            border-radius: 4px;
-            text-decoration: none;
-            border: 1px solid #e6ebf0;
-        }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
 
-        footer {
-            background-color: #004AAD;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            width: 100%;
-            margin-top: 40px;
-        }
+    footer {
+      background-color: #004AAD;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      width: 100%;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
 
-        .footer-section {
-            flex: 1;
-            padding: 10px;
-        }
+    .footer-section {
+      flex: 1;
+      padding: 10px;
+    }
 
-        .footer-section h3 {
-            margin-top: 0;
-            font-size: 1.2em;
-        }
+    .footer-section h3 {
+      margin-top: 0;
+      font-size: 1.2em;
+    }
 
-        .footer-section p {
-            margin: 5px 0;
-        }
+    .footer-section p {
+      margin: 5px 0;
+    }
 
-        .footer-logo {
-            width: 150px; /* Adjust the width as needed */
-            height: auto; /* Maintain aspect ratio */
-        }
+    .footer-logo {
+      width: 150px; 
+      height: auto; 
+    }
 
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
 
-        .social-icons a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
 
-        .social-icons a img {
-            height: 20px;
-            margin-right: 5px;
-        }
+    .social-icons a img {
+      height: 20px;
+      margin-right: 5px;
+    }
 
-        @media (min-width: 768px) {
-            .hero h1 {
-                font-size: 6rem;
-            }
+    .projects-main {
+      background-color: #f0f0f0;
+      padding: 60px 20px;
+    }
 
-            .hero p {
-                font-size: 1.5rem;
-            }
-        }
+    .projects-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
 
-        /* Specific styles for the login page */
-        .login-container {
-            background-color: #105192;
-            padding: 20px 40px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            text-align: center;
-            width: 400px;
-            max-height: 80vh; /* Ensure it doesn't go beyond viewport height */
-            overflow-y: auto; /* Make it scrollable */
-            margin-top: 40px; /* Add margin to separate from the navbar */
-        }
+    .projects-container h1 {
+      font-size: 3rem;
+      color: #004AAD;
+      margin-bottom: 10px;
+    }
 
-        h2 {
-            margin-bottom: 20px;
-            color: #fdf9f9;
-        }
+    .projects-container h1 span {
+      display: block;
+      font-weight: normal;
+      font-size: 1.5rem;
+      color: #333;
+    }
 
-        .input-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
+    .projects-container .subtitle {
+      max-width: 800px;
+      margin: 0 auto 50px;
+      font-size: 1rem;
+      color: #333;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #fdfafa;
-        }
+    .project-block {
+      background: #ffffffcc;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    }
 
-        input {
-            width: 95%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
+    .project-block.reverse {
+      flex-direction: row-reverse;
+    }
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    .project-text {
+      flex: 1 1 300px;
+      padding: 30px;
+      text-align: left;
+    }
 
-        button:hover {
-            background-color: #218838;
-        }
+    .project-text h2 {
+      color: #004AAD;
+      margin-bottom: 10px;
+    }
 
-        .social-login {
-            margin-top: 20px;
-        }
+    .project-text p {
+      color: #333;
+      font-size: 1rem;
+    }
 
-        .social-login p {
-            margin-bottom: 10px;
-            color: #fffbfb;
-        }
+    .project-image {
+      flex: 1 1 300px;
+      min-width: 300px;
+      max-height: 250px;
+      overflow: hidden;
+    }
 
-        .social-login button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: bold;
-        }
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        .social-login img {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-        }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
 
-        .social-login .facebook {
-            background-color: #3b5998;
-            color: #fff;
-        }
+    .pagination button {
+      background-color: #004AAD;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
 
-        .social-login .gmail {
-            background-color: #db4437;
-            color: #fff;
-        }
+    .pagination button.active {
+      background-color: #00307d;
+    }
 
-        .social-login .apple {
-            background-color: #000;
-            color: #fff;
-        }
+    .pagination button:disabled {
+      background-color: #888;
+      cursor: not-allowed;
+    }
 
-        .social-login button:hover {
-            opacity: 0.9;
-        }
-
-        /* Specific styles for the Projects page */
-        .projects-main {
-            background-color: #e0e0e0;
-            padding: 50px 0;
-        }
-
-        .projects-content {
-            max-width: 1200px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .projects-content h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: #004AAD;
-        }
-
-        .projects-content p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            color: #555;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .project-card img {
-            max-width: 100%;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        .project-card h2 {
-            font-size: 24px;
-            color: #004AAD;
-            margin-bottom: 10px;
-        }
-
-        .project-card p {
-            color: #555;
-            font-size: 16px;
-            display: none;
-            margin-top: 10px;
-        }
-
-        .project-card.active {
-            padding-bottom: 50px;
-        }
-
-        .project-card.active p {
-            display: block;
-        }
-    </style>
+    @media (max-width: 768px) {
+      .projects-container h1 {
+        font-size: 2.2rem;
+      }
+      .project-block {
+        flex-direction: column;
+      }
+      .project-image {
+        min-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="left-links">
-            <img src="logo.png" alt="Logo">
-            <a href="#">SUPPORT</a>
-            <a href="#">PARTNERS</a>
-            <a href="#">CAREERS</a>
-        </div>
-        <div class="right-links">
-            <a href="Index.html">Home</a>
-            <a href="Projects.html">Projects</a>
-            <a href="rentals.html">Rentals</a>
-            <a href="Apply.html">Apply</a>
-            <a href="Contact.html">Contacts</a>
-            <a href="login.html" class="login">Login</a>
-        </div>
-    </nav>
-
-    <div class="projects-main">
-        <div class="projects-content">
-            <h1>Our Construction Projects</h1>
-            <p>We have completed a variety of construction projects. Click on each project to learn more about it.</p>
-
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="project1.jpg" alt="Project 1">
-                    <h2>Project 1</h2>
-                    <p>Details about Project 1. This project involved the construction of a large residential complex.</p>
-                </div>
-
-                <div class="project-card">
-                    <img src="project2.jpg" alt="Project 2">
-                    <h2>Project 2</h2>
-                    <p>Details about Project 2. This project involved the renovation of a commercial building.</p>
-                </div>
-
-                <div class="project-card">
-                    <img src="project3.jpg" alt="Project 3">
-                    <h2>Project 3</h2>
-                    <p>Details about Project 3. This project was a government contract for road construction.</p>
-                </div>
-
-                <div class="project-card">
-                    <img src="project4.jpg" alt="Project 4">
-                    <h2>Project 4</h2>
-                    <p>Details about Project 4. This project involved the construction of a state-of-the-art office building.</p>
-                </div>
-
-                <div class="project-card">
-                    <img src="project5.jpg" alt="Project 5">
-                    <h2>Project 5</h2>
-                    <p>Details about Project 5. This project was a large-scale infrastructure development.</p>
-                </div>
-
-                <div class="project-card">
-                    <img src="project6.jpg" alt="Project 6">
-                    <h2>Project 6</h2>
-                    <p>Details about Project 6. This project included the construction of a new hospital wing.</p>
-                </div>
-
-                <div class="project-card">
-                    <img src="project7.jpg" alt="Project 7">
-                    <h2>Project 7</h2>
-                    <p>Details about Project 7. This project involved the construction of a new shopping mall.</p>
-                </div>
-
-                <div class="project-card">
-                    <img src="project8.jpg" alt="Project 8">
-                    <h2>Project 8</h2>
-                    <p>Details about Project 8. This project involved the renovation of a historic building.</p>
-                </div>
-            </div>
-        </div>
+  <nav class="navbar">
+    <div class="navbar-center">
+      <img src="LOGO.png" alt="Logo" class="logo-centered">
+      <div class="nav-links">
+        <a href="Index.html">Home</a>
+        <a href="Projects.html">Projects</a>
+        <a href="rentals.html">Rentals</a>
+        <a href="Apply.html">Apply</a>
+        <a href="Contact.html">Contacts</a>
+        <a href="login.html" class="login">Login</a>
+      </div>
     </div>
+  </nav>
 
-    <footer>
-        <div class="footer-section">
-            <img src="LOGO.png" alt="Logo" class="footer-logo">
-        </div>
-        <div class="footer-section">
-            <p>PUNTA, DIPOLOG CITY</p>
-            <p>ZAMBOANGA DEL NORTE</p>
-            <p>Mailing Address:</p>
-            <p>PUNTA, DIPOLOG CITY</p>
-            <p>ZAMBOANGA DEL NORTE</p>
-            <p>09994801639</p>
-        </div>
-        <div class="footer-section">
-            <br>
-            <br>
-            <br><br>
-            <p style="text-align: center; font-size: 9px;">NORTH SALT LAKE&emsp;ST. GEORGE/WASHINGTON&emsp;CEDAR CITY&emsp;DIPOLOG,PHILIPPINES</p>
-            <hr style="border-top: 1px solid white;">
-            <div style="display: flex; justify-content: center;">
-                <a href="#" style="color: white; text-decoration: none; margin-right: 20px; font-size: 11px;">PRIVACY POLICY</a>
-                <span style="color: white;">|</span>
-                <a href="#" style="color: white; text-decoration: none; margin-left: 20px; font-size: 11px;">SITE MAP</a>
-            </div>
-            <p style="text-align: center; font-size: 11px;">© YOZECH CONSTRUCTION</p>
-        </div>
-        <div class="footer-section">
-            <p>Contact</p>
-            <p>Subcontractors</p>
-            <p>Employee Portal</p>
-            <p>Careers</p>
-            <hr>
-            <div class="social-icons">
-                <a href="#"><img src="twitter.png" alt="Twitter">Twitter</a>
-                <a href="#"><img src="facebook.png" alt="Facebook">Facebook</a>
-                <a href="#"><img src="instagram.png" alt="Instagram">Instagram</a>
-                <a href="#"><img src="youtube.png" alt="YouTube">YouTube</a>
-            </div>
-        </div>
-    </footer>
+  <div class="projects-main">
+    <div class="projects-container">
+      <h1>Construction solution <span>for everyone</span></h1>
+      <p class="subtitle">
+        We take pride in every project we’ve completed — big or small, simple or complex. Our team brings consistency, quality, and commitment to each build, ensuring every structure or improvement stands the test of time.
+      </p>
 
-    <script>
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('click', () => {
-                card.classList.toggle('active');
-            });
-        });
-    </script>
+      <!-- PAGE 1 -->
+      <div class="projects-page" id="page-1">
+        <div class="project-block">
+          <div class="project-text">
+            <h2>Drainage Canal – Zone 3 Main Street</h2>
+            <p><strong>Start Date:</strong> November 20, 2023<br>
+               <strong>Completion Date:</strong> January 10, 2024</p>
+            <p>This project improved water flow during storms, helping prevent frequent flooding. It included excavation, canal lining, and safety barriers.</p>
+          </div>
+          <div class="project-image">
+            <img src="drainage.jpg" alt="Drainage Canal">
+          </div>
+        </div>
+
+        <div class="project-block reverse">
+          <div class="project-text">
+            <h2>2-Story Commercial Building</h2>
+            <p><strong>Start Date:</strong> August 15, 2023<br>
+               <strong>Completion Date:</strong> December 1, 2023</p>
+            <p>A modern two-story structure built to accommodate retail and office spaces. This project showcases our capacity for vertical construction, combining structural integrity with clean design.</p>
+          </div>
+          <div class="project-image">
+            <img src="building.jpg" alt="2-Story Commercial Building">
+          </div>
+        </div>
+
+        <div class="project-block">
+          <div class="project-text">
+            <h2>Underground Conveyor Tunnel</h2>
+            <p><strong>Started:</strong> March 20, 2025</p>
+            <p>A specialized infrastructure project designed to support the efficient transport of materials across an industrial facility. The tunnel includes reinforced walls and integrated safety systems to ensure long-term durability and smooth operation.</p>
+          </div>
+          <div class="project-image">
+            <img src="tunnel.jpg" alt="Underground Conveyor Tunnel">
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGE 2 -->
+      <div class="projects-page" id="page-2" style="display:none;">
+        <div class="project-block">
+          <div class="project-text">
+            <h2>Warehouse Expansion Project</h2>
+            <p><strong>Start Date:</strong> February 10, 2024<br>
+               <strong>Completion Date:</strong> June 30, 2024</p>
+            <p>This warehouse expansion increased storage capacity and introduced modern logistics systems for optimized inventory management.</p>
+          </div>
+          <div class="project-image">
+            <img src="warehouse.jpg" alt="Warehouse Expansion">
+          </div>
+        </div>
+
+        <div class="project-block reverse">
+          <div class="project-text">
+            <h2>City Park Revitalization</h2>
+            <p><strong>Start Date:</strong> May 15, 2024<br>
+               <strong>Completion Date:</strong> September 15, 2024</p>
+            <p>This project transformed an aging city park into a vibrant community space with new walking paths, landscaping, and modern amenities.</p>
+          </div>
+          <div class="project-image">
+            <img src="park.jpg" alt="City Park Revitalization">
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGE 3 -->
+      <div class="projects-page" id="page-3" style="display:none;">
+        <div class="project-block">
+          <div class="project-text">
+            <h2>Highway Bridge Replacement</h2>
+            <p><strong>Start Date:</strong> July 1, 2024<br>
+               <strong>Completion Date:</strong> November 30, 2024</p>
+            <p>Replacement of an aging highway bridge with a modern structure, improving traffic flow and safety for commuters and freight transport.</p>
+          </div>
+          <div class="project-image">
+            <img src="bridge.jpg" alt="Highway Bridge Replacement">
+          </div>
+        </div>
+      </div>
+
+      <div class="pagination">
+        <button data-page="1" class="active">1</button>
+        <button data-page="2">2</button>
+        <button data-page="3">3</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-section">
+      <img src="LOGO.png" alt="Logo" class="footer-logo">
+    </div>
+    <div class="footer-section">
+      <p>PUNTA, DIPOLOG CITY</p>
+      <p>ZAMBOANGA DEL NORTE</p>
+      <p>Mailing Address:</p>
+      <p>PUNTA, DIPOLOG CITY</p>
+      <p>ZAMBOANGA DEL NORTE</p>
+      <p>09994801639</p>
+    </div>
+    <div class="footer-section">
+      <br><br><br><br>
+      <p style="text-align: center; font-size: 9px;">NORTH SALT LAKE&emsp;ST. GEORGE/WASHINGTON&emsp;CEDAR CITY&emsp;DIPOLOG,PHILIPPINES</p>
+      <hr style="border-top: 1px solid white;">
+      <div style="display: flex; justify-content: center;">
+        <a href="#" style="color: white; text-decoration: none; margin-right: 20px; font-size: 11px;">PRIVACY POLICY</a>
+        <span style="color: white;">|</span>
+        <a href="#" style="color: white; text-decoration: none; margin-left: 20px; font-size: 11px;">SITE MAP</a>
+      </div>
+      <p style="text-align: center; font-size: 11px;">© YOZECH CONSTRUCTION</p>
+    </div>
+    <div class="footer-section">
+      <p>Contact</p>
+      <p>Subcontractors</p>
+      <p>Employee Portal</p>
+      <p>Careers</p>
+      <hr>
+      <div class="social-icons">
+        <a href="#"><img src="twitter.png" alt="Twitter">Twitter</a>
+        <a href="#"><img src="facebook.png" alt="Facebook">Facebook</a>
+        <a href="#"><img src="instagram.png" alt="Instagram">Instagram</a>
+        <a href="#"><img src="youtube.png" alt="YouTube">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const pages = document.querySelectorAll('.projects-page');
+    const buttons = document.querySelectorAll('.pagination button[data-page]');
+    let currentPage = 1;
+    const totalPages = pages.length;
+
+    function showPage(pageNum) {
+      pages.forEach(p => p.style.display = 'none');
+      document.getElementById(`page-${pageNum}`).style.display = 'block';
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.pagination button[data-page="${pageNum}"]`)?.classList.add('active');
+
+      currentPage = pageNum;
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const page = btn.dataset.page;
+        if (page) {
+          showPage(Number(page));
+        }
+      });
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      let nextPage = currentPage + 1;
+      if (nextPage > totalPages) nextPage = 1;
+      showPage(nextPage);
+    });
+
+    
+    showPage(currentPage);
+  </script>
 </body>
 </html>
