@@ -1,0 +1,417 @@
+/* ========== GENERAL STYLES ========== */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body.home-page {
+  background-image: url('home-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+body.apply-page {
+  background-image: url('apply-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+body.default-page {
+  background-image: url('1.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* ========== NAVBAR ========== */
+.navbar {
+  background-color: #004AAD;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-center {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.logo-centered {
+  height: 70px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.login {
+  background-color: #105192;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid #e6ebf0;
+}
+
+/* ========== LOGIN PAGE ========== */
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px 50px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  width: 500px;
+  max-width: 90%;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  color: black;
+  font-size: 32px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: black;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="submit"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 1.2rem;
+}
+
+.login-container button,
+button {
+  background-color: #004AAD;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.login-container button:hover,
+button:hover {
+  background-color: #003080;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background-color: #004AAD;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 15px;
+  width: 100%;
+}
+
+.footer-section {
+  flex: 1;
+  padding: 5px;
+}
+
+.footer-logo {
+  width: 100px;
+  height: auto;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.social-icons a img {
+  height: 20px;
+  margin-right: 5px;
+}
+
+/* ========== PROJECTS PAGE ========== */
+.projects-main {
+  background-color: #f0f0f0;
+  padding: 60px 20px;
+}
+
+.projects-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.projects-container h1 {
+  font-size: 3rem;
+  color: #004AAD;
+  margin-bottom: 10px;
+}
+
+.projects-container h1 span {
+  display: block;
+  font-weight: normal;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.projects-container .subtitle {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.project-block {
+  background: #ffffffcc;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-block.reverse {
+  flex-direction: row-reverse;
+}
+
+.project-text {
+  flex: 1 1 300px;
+  padding: 30px;
+  text-align: left;
+}
+
+.project-text h2 {
+  color: #004AAD;
+  margin-bottom: 10px;
+}
+
+.project-text p {
+  color: #333;
+  font-size: 1rem;
+}
+
+.project-image {
+  flex: 1 1 300px;
+  min-width: 300px;
+  max-height: 250px;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  background-color: #004AAD;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.pagination button.active {
+  background-color: #00307d;
+}
+
+.pagination button:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+/* ========== RENTAL EQUIPMENT FORM ========== */
+.application-form {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.application-form h2 {
+  text-align: center;
+  color: #004AAD;
+  margin-bottom: 1.5rem;
+}
+
+/* ========== RENTALS LIST ========== */
+.rentals-main {
+  background-color: #e0e0e0;
+  padding: 50px 0;
+}
+
+.rentals-content {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.rentals-content h1 {
+  font-size: 48px;
+  margin-bottom: 30px;
+  color: #004AAD;
+}
+
+.rentals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.rental-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rental-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.status-label {
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.green {
+  background-color: #28a745;
+}
+
+.red {
+  background-color: #dc3545;
+}
+
+.card-body {
+  text-align: left;
+}
+
+.title {
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.backhoe { color: #8B9EFF; }
+.dumptruck { color: #FF8A00; }
+.roadroller { color: #F44336; }
+.transit { color: #FF4081; }
+.cargo { color: #4CAF50; }
+.grader { color: #E91E63; }
+
+.price {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* ========== RESPONSIVENESS ========== */
+@media (max-width: 768px) {
+  .projects-container h1 {
+    font-size: 2.2rem;
+  }
+  .project-block {
+    flex-direction: column;
+  }
+  .project-image {
+    min-width: 100%;
+  }
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-section {
+    margin-bottom: 10px;
+  }
+}
