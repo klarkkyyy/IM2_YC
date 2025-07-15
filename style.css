@@ -48,9 +48,6 @@ body.default-page {
   justify-content: center;
 }
 
-.logo-centered {
-  height: 70px;
-}
 
 .nav-links {
   display: flex;
@@ -69,14 +66,6 @@ body.default-page {
   text-decoration: underline;
 }
 
-.login {
-  background-color: #105192;
-  color: #ffffff;
-  padding: 5px 10px;
-  border-radius: 4px;
-  text-decoration: none;
-  border: 1px solid #e6ebf0;
-}
 
 /* ========== LOGIN PAGE ========== */
 .main-content {
@@ -149,44 +138,56 @@ button:hover {
 
 /* ========== FOOTER ========== */
 footer {
-  background-color: #004AAD;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 15px;
-  width: 100%;
-}
+            background-color: #004AAD;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
 
-.footer-section {
-  flex: 1;
-  padding: 5px;
-}
+        .footer-section {
+            flex: 1;
+            padding: 10px;
+        }
 
-.footer-logo {
-  width: 100px;
-  height: auto;
-}
+        .footer-section h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+        }
 
-.social-icons {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
+        .footer-section p {
+            margin: 5px 0;
+        }
 
-.social-icons a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-}
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
 
-.social-icons a img {
-  height: 20px;
-  margin-right: 5px;
-}
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .social-icons a img {
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        @media (min-width: 768px) {
+            .navbar .left-links a,
+            .navbar .right-links a {
+                margin: 0 1.5rem;
+            }
+
+            .contact-section {
+                padding: 6rem 4rem;
+            }
+        }
 
 /* ========== PROJECTS PAGE ========== */
 .projects-main {
@@ -414,4 +415,297 @@ footer {
   .footer-section {
     margin-bottom: 10px;
   }
+}
+
+.rent-button {
+  margin-top: 10px;
+  background-color: #004AAD;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  font-weight: bold;
+}
+.rent-button:hover {
+  background-color: #00307d;
+}
+
+
+.white-box {
+            background-color: rgb(255, 255, 255);
+            border: 2px solid #004AAD;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        
+.navbar {
+    background-color: #004AAD;
+    padding: 1.25rem 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 40px;
+
+}
+
+.navbar-center {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+
+.logo-centered {
+height: 30px; 
+}
+
+.nav-links {
+display: flex;
+gap: 2.0rem;
+flex-wrap: wrap;
+}
+
+.nav-links a {
+color: white;
+text-decoration: none;
+font-weight: bold;
+font-size: 1rem;
+}
+
+.nav-links a:hover {
+text-decoration: underline;
+}
+
+.hero {
+    background: url('Background.jpg') no-repeat center center/cover;
+    position: relative;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin: 1rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.hero button {
+    background-color: #D2153D;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    background: url('image4.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: white;
+    color: #004AAD;
+}
+
+.content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(83, 82, 82, 0.5);
+    z-index: 1;
+}
+
+.content-left,
+.content-right {
+    position: relative;
+    z-index: 2;
+}
+
+.content-left {
+    display: flex;
+    align-items: center;
+}
+
+.content-left div {
+    height: 200px;
+    width: 200px;
+    margin: 0 2.5rem;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.content-left div:nth-child(1) {
+    background-color: #004AAD;
+    color: white;
+}
+
+.content-left div:nth-child(2) {
+    background-color: #D2153D;
+    color: white;
+}
+
+.content-left div h2 {
+    font-size: 6rem;
+    margin: 0;
+}
+
+.content-left div p {
+    margin: 0;
+}
+
+.content-right {
+    width: 50%;
+}
+
+.content-right h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.service {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.service img {
+    background-color: rgb(255, 255, 255);
+    padding: 0.5rem;
+    margin-right: 1rem;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #004AAD;
+    box-sizing: border-box;
+}
+
+.additional-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    background: url('background2.jpg') no-repeat center center/cover;
+    color: #004AAD;
+}
+
+.additional-content div {
+    flex: 1;
+    margin: 0 1rem;
+    padding: 1rem;
+    background-color: rgba(67, 67, 67, 0.7);
+    border-radius: 5px;
+}
+
+.additional-content h3 {
+    font-size: 2.5rem;
+    color: #D2153D;
+}
+
+.additional-content p {
+    color: white;
+}
+
+footer {
+    background-color: #004AAD;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    padding: 10px;
+}
+
+.footer-section h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+.footer-section p {
+    margin: 5px 0;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.forlogo {
+    height: 25px;
+    padding: 40px;
+}
+
+.social-icons a img {
+    height: 20px;
+    margin-right: 5px;
+}
+
+@media (min-width: 768px) {
+    .hero h1 {
+        font-size: 6rem;
+    }
+
+    .hero p {
+        font-size: 1.5rem;
+    }
+
+    .navbar .left-links a,
+    .navbar .right-links a {
+        margin: 0 0.5rem;
+    }
 }

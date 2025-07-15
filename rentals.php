@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rentals - Construction Solution</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -31,12 +32,12 @@
         }
 
     .logo-centered {
-      height: 70px;
+      height: 35px;
     }
 
     .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 2.0rem;
       flex-wrap: wrap;
     }
 
@@ -212,19 +213,7 @@
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="navbar-center">
-      <img src="LOGO.png" alt="Logo" class="logo-centered">
-      <div class="nav-links">
-        <a href="Index.html">Home</a>
-        <a href="Projects.html">Projects</a>
-        <a href="rentals.html">Rentals</a>
-        <a href="Apply.html">Apply</a>
-        <a href="Contact.html">Contacts</a>
-        <a href="login.html" class="login">Login</a>
-      </div>
-    </div>
-  </nav>
+  <?php include 'navbar.php'; ?>
 
   <div class="rentals-main">
     <div class="rentals-content">
@@ -242,6 +231,7 @@
             <h2 class="title backhoe">Backhoe</h2>
             <p>A versatile digging and loading machine with a front loader and rear excavator arm. Ideal for trenching, material handling, and small demolition tasks.</p>
             <p class="price">Daily: ₱6,000<br>Weekly: ₱36,000<br>Monthly: ₱130,000</p>
+            <a href="apply.php?equipment=Backhoe" class="rent-button">Rent Now</a>
           </div>
         </div>
 
@@ -308,42 +298,6 @@
     </div>
   </div>
 
-  <footer>
-    <div class="forlogo">
-      <img src="LOGO.png">
-    </div>
-    <div class="footer-section">
-      <p style="margin-left: 100px;">PUNTA, DIPOLOG CITY</p>
-      <p style="margin-left: 100px;">ZAMBOANGA DEL NORTE</p>
-      <p style="margin-left: 100px;">Mailing Address:</p>
-      <p style="margin-left: 100px;">PUNTA, DIPOLOG CITY</p>
-      <p style="margin-left: 100px;">ZAMBOANGA DEL NORTE</p>
-      <p style="margin-left: 100px;">09994801639</p>
-    </div>
-    <div class="footer-section">
-      <br><br><br><br>
-      <p style="text-align: center; font-size: 9px;">NORTH SALT LAKE&emsp;ST. GEORGE/WASHINGTON&emsp;CEDAR CITY&emsp;DIPOLOG,PHILIPPINES</p>
-      <hr style="border-top: 1px solid white;">
-      <div style="display: flex; justify-content: center;">
-        <a href="#" style="color: white; text-decoration: none; margin-right: 20px; font-size: 11px;">PRIVACY POLICY</a>
-        <span style="color: white;">|</span>
-        <a href="#" style="color: white; text-decoration: none; margin-left: 20px; font-size: 11px;">SITE MAP</a>
-      </div>
-      <p style="text-align: center; font-size: 11px;">© YOZECH CONSTRUCTION</p>
-    </div>
-    <div class="footer-section">
-      <p>Contact</p>
-      <p>Subcontractors</p>
-      <p>Employee Portal</p>
-      <p>Careers</p>
-      <hr>
-      <div class="social-icons">
-        <a href="#"><img src="twitter.png" alt="Twitter">Twitter</a>
-        <a href="#"><img src="facebook.png" alt="Facebook">Facebook</a>
-        <a href="#"><img src="instagram.png" alt="Instagram">Instagram</a>
-        <a href="#"><img src="youtube.png" alt="YouTube">YouTube</a>
-      </div>
-    </div>
-  </footer>
+  <?php include 'footer.php'; ?>
 </body>
 </html>
