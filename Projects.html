@@ -5,15 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects - Construction Solution</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f0f0f0;
-      background-image: url('1.jpg');
-      background-size: cover;
-      background-position: center;
-    }
+
+
+  body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+  z-index: 0;
+}
+
+  body::before {
+  content: "";
+  opacity: 0.3;
+  background-image: url('construction site with cranes in_15536341.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+      
+    
 
     .navbar {
             background-color: #004AAD;
@@ -104,7 +123,7 @@
     }
 
     .projects-main {
-      background-color: #f0f0f0;
+      background-color: transparent;
       padding: 60px 20px;
     }
 
@@ -131,7 +150,7 @@
       max-width: 800px;
       margin: 0 auto 50px;
       font-size: 1rem;
-      color: #333;
+      color: #000000;
     }
 
     .project-block {
@@ -251,7 +270,7 @@
             <p>This project improved water flow during storms, helping prevent frequent flooding. It included excavation, canal lining, and safety barriers.</p>
           </div>
           <div class="project-image">
-            <img src="drainage.jpg" alt="Drainage Canal">
+            <img src="drainage canal.jfif" alt="Drainage Canal">
           </div>
         </div>
 
@@ -263,7 +282,7 @@
             <p>A modern two-story structure built to accommodate retail and office spaces. This project showcases our capacity for vertical construction, combining structural integrity with clean design.</p>
           </div>
           <div class="project-image">
-            <img src="building.jpg" alt="2-Story Commercial Building">
+            <img src="2storycommericial.jfif" alt="2-Story Commercial Building">
           </div>
         </div>
 
@@ -274,7 +293,7 @@
             <p>A specialized infrastructure project designed to support the efficient transport of materials across an industrial facility. The tunnel includes reinforced walls and integrated safety systems to ensure long-term durability and smooth operation.</p>
           </div>
           <div class="project-image">
-            <img src="tunnel.jpg" alt="Underground Conveyor Tunnel">
+            <img src="belt-conveyor-in-an-underground-tunnel-transportation-of-ore-to-the-surface-2GY7D0Y.jpg" alt="Underground Conveyor Tunnel">
           </div>
         </div>
       </div>
@@ -289,7 +308,7 @@
             <p>This warehouse expansion increased storage capacity and introduced modern logistics systems for optimized inventory management.</p>
           </div>
           <div class="project-image">
-            <img src="warehouse.jpg" alt="Warehouse Expansion">
+            <img src="warehouseexpansion.jfif" alt="Warehouse Expansion">
           </div>
         </div>
 
@@ -301,7 +320,7 @@
             <p>This project transformed an aging city park into a vibrant community space with new walking paths, landscaping, and modern amenities.</p>
           </div>
           <div class="project-image">
-            <img src="park.jpg" alt="City Park Revitalization">
+            <img src="citypark.jpg" alt="City Park Revitalization">
           </div>
         </div>
       </div>
@@ -316,7 +335,7 @@
             <p>Replacement of an aging highway bridge with a modern structure, improving traffic flow and safety for commuters and freight transport.</p>
           </div>
           <div class="project-image">
-            <img src="bridge.jpg" alt="Highway Bridge Replacement">
+            <img src="replacement_of_overflow_br_aurora_1.jpg" alt="Highway Bridge Replacement">
           </div>
         </div>
       </div>
