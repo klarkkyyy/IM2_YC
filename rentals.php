@@ -1,5 +1,5 @@
 <?php
-include 'database.php'; // make sure this file contains your DB connection ($conn)
+include 'database.php';
 ?>
 
 <!DOCTYPE html>

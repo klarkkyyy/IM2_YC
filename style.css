@@ -353,9 +353,11 @@ footer {
 }
 
 .rentals-grid {
-  display: flex;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px 85px;
   justify-content: center;
+  padding: 20px;
 }
 
 .equipment-preview {
@@ -365,8 +367,8 @@ footer {
 }
 
 .rental-card {
-  width: 300px;                 /* Fixed width */
-  min-height: 500px;            /* Uniform height */
+  width: 300px;                
+  min-height: 500px;          
   max-height: 550px;
   display: flex;
   flex-direction: column;
