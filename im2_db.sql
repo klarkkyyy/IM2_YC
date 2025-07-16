@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2025 at 01:45 AM
+-- Generation Time: Jul 16, 2025 at 07:35 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -72,8 +72,22 @@ CREATE TABLE `equipment` (
   `EquipmentName` varchar(100) DEFAULT NULL,
   `RentalStartDate` date DEFAULT NULL,
   `RentalEndDate` date DEFAULT NULL,
-  `NeedsOperator` tinyint(1) DEFAULT 0
+  `NeedsOperator` tinyint(1) DEFAULT 0,
+  `Description` text DEFAULT NULL,
+  `ImagePath` varchar(255) DEFAULT NULL,
+  `DailyPrice` decimal(10,2) DEFAULT NULL,
+  `WeeklyPrice` decimal(10,2) DEFAULT NULL,
+  `MonthlyPrice` decimal(10,2) DEFAULT NULL,
+  `Availability` enum('Available','Unavailable') DEFAULT 'Available'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `equipment`
+--
+
+INSERT INTO `equipment` (`EquipmentID`, `EquipmentName`, `RentalStartDate`, `RentalEndDate`, `NeedsOperator`, `Description`, `ImagePath`, `DailyPrice`, `WeeklyPrice`, `MonthlyPrice`, `Availability`) VALUES
+(1, 'Backhoe', NULL, NULL, 0, 'A versatile digging and loading machine with a front loader and rear excavator arm.', 'backhoe-removebg-preview.png', 6000.00, 36000.00, 130000.00, 'Available'),
+(3, 'Cargo Truck', NULL, NULL, 0, 'Designed to transport goods, equipment, and supplies. Comes with either a closed van or open-bed configuration.', 'cargotruck.jfif', 4000.00, 25000.00, 90000.00, 'Available');
 
 -- --------------------------------------------------------
 
@@ -277,7 +291,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `equipment`
 --
 ALTER TABLE `equipment`
-  MODIFY `EquipmentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EquipmentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `equipmentrental`
