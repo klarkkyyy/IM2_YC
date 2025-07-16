@@ -1,10 +1,45 @@
 <?php
-// admin_dashboard.php
+
 session_start();
 if (!isset($_SESSION['User_id']) || $_SESSION['User_type'] !== 'Admin') {
     header("Location: login.php");
     exit();
 }
+
+require 'database.php';
+
+// Display recent activities with SELECT
+$activities = [];
+$activitySql = "SELECT ActivityDate, ActivityType, Username, Details FROM recent_activity ORDER BY ActivityDate DESC LIMIT 10";
+$activityResult = mysqli_query($conn, $activitySql);
+
+if ($activityResult && mysqli_num_rows($activityResult) > 0) {
+    while ($row = mysqli_fetch_assoc($activityResult)) {
+        $activities[] = $row;
+    }
+}
+
+
+// Counting users that are clients with COUNT(*)
+$totalClients = 0;
+$sql = "SELECT COUNT(*) AS total FROM user WHERE UserType = 'Client'";
+$result = mysqli_query($conn, $sql);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $totalClients = $row['total'];
+}
+
+// Count available equipments with SELECT
+$totalAvailableEquipment = 0;
+$equipmentQuery = "SELECT COUNT(*) AS total FROM equipment WHERE Availability = 'Available'";
+$equipmentResult = mysqli_query($conn, $equipmentQuery);
+
+if ($equipmentResult && mysqli_num_rows($equipmentResult) > 0) {
+    $row = mysqli_fetch_assoc($equipmentResult);
+    $totalAvailableEquipment = $row['total'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -24,51 +59,27 @@ if (!isset($_SESSION['User_id']) || $_SESSION['User_type'] !== 'Admin') {
             --warning-color: #ffc107;
         }
         
-        body {
+        html, body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
+        body {
+            flex: 1;
+        }
         .admin-container {
             display: flex;
-            min-height: 100vh;
+            gap: 20px;
+            flex: 1;
         }
+
         
-        /* Sidebar Styles */
-        .sidebar {
-            width: 250px;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 20px 0;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-        }
         
-        .sidebar-header {
-            padding: 0 20px 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .sidebar-nav {
-            padding: 20px 0;
-        }
-        
-        .nav-item {
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .nav-item:hover, .nav-item.active {
-            background-color: var(--secondary-color);
-        }
-        
-        .nav-item a {
-            color: white;
-            text-decoration: none;
-            display: block;
-        }
         
         /* Main Content Styles */
         .main-content {
@@ -178,37 +189,54 @@ if (!isset($_SESSION['User_id']) || $_SESSION['User_type'] !== 'Admin') {
             padding: 5px 10px;
             font-size: 0.8rem;
         }
+
+        footer {
+            background-color: #004AAD;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            margin-bottom: auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .footer-section h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        .footer-section p {
+            margin: 5px 0;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .social-icons a img {
+            height: 20px;
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="admin-container">
         <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="sidebar-header">
-                <h2>Admin Panel</h2>
-                <p>Welcome, <?php echo htmlspecialchars($_SESSION['Username']); ?></p>
-            </div>
-            <div class="sidebar-nav">
-                <div class="nav-item active">
-                    <a href="admin_dashboard.php">Dashboard</a>
-                </div>
-                <div class="nav-item">
-                    <a href="admin_users.php">User Management</a>
-                </div>
-                <div class="nav-item">
-                    <a href="admin_projects.php">Project Management</a>
-                </div>
-                <div class="nav-item">
-                    <a href="admin_equipment.php">Equipment Management</a>
-                </div>
-                <div class="nav-item">
-                    <a href="admin_reports.php">Reports</a>
-                </div>
-                <div class="nav-item">
-                    <a href="logout.php">Logout</a>
-                </div>
-            </div>
-        </div>
+        <?php include 'admin_sidebar.php'; ?>
         
         <!-- Main Content -->
         <div class="main-content">
@@ -223,23 +251,15 @@ if (!isset($_SESSION['User_id']) || $_SESSION['User_type'] !== 'Admin') {
             <div class="dashboard-cards">
                 <div class="card">
                     <h3>Total Users</h3>
-                    <div class="value">147</div>
-                    <p>5 new this week</p>
+                    <div class="value"><?php echo $totalClients; ?></div>
                 </div>
                 <div class="card">
                     <h3>Active Projects</h3>
                     <div class="value">24</div>
-                    <p>3 completed this month</p>
                 </div>
                 <div class="card">
                     <h3>Equipment Available</h3>
-                    <div class="value">58</div>
-                    <p>12 currently rented</p>
-                </div>
-                <div class="card">
-                    <h3>Revenue</h3>
-                    <div class="value success">₱1,245,000</div>
-                    <p>15% increase from last month</p>
+                    <div class="value"><?php echo $totalAvailableEquipment; ?></div>
                 </div>
             </div>
             
@@ -283,5 +303,6 @@ if (!isset($_SESSION['User_id']) || $_SESSION['User_type'] !== 'Admin') {
             </table>
         </div>
     </div>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

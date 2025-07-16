@@ -1,3 +1,4 @@
+
 /* ========== GENERAL STYLES ========== */
 body, html {
   margin: 0;
@@ -356,7 +357,7 @@ footer {
 }
 
 .rentals-content {
-  max-width: 1200px;
+  max-width: 80%;
   margin: auto;
   text-align: center;
 }
@@ -369,10 +370,9 @@ footer {
 
 .rentals-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px 85px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
   justify-content: center;
-  padding: 20px;
 }
 
 .equipment-preview {
@@ -382,8 +382,8 @@ footer {
 }
 
 .rental-card {
-  width: 300px;                
-  min-height: 500px;          
+  width: 300px;                 /* Fixed width */
+  min-height: 500px;            /* Uniform height */
   max-height: 550px;
   display: flex;
   flex-direction: column;
@@ -914,4 +914,5 @@ footer {
         min-width: 100%;
       }
     }
+
 

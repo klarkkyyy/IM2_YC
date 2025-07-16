@@ -13,19 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_stmt_bind_param($stmt, "s", $username);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
-<<<<<<< HEAD
-
-    if (mysqli_num_rows($result) === 1) {
-        $user = mysqli_fetch_assoc($result);
-        if (password_verify($password, $user['Password'])) {
-            session_start();
-            $_SESSION['user_id'] = $user['UserID'];
-            $_SESSION['username'] = $user['Username'];
-            $_SESSION['user_type'] = strtolower($user['UserType']); // Store as lowercase
-
-            // Redirect based on user type
-            if ($_SESSION['user_type'] === 'admin') {
-=======
 
     if (mysqli_num_rows($result) === 1) {
         $user = mysqli_fetch_assoc($result);
@@ -37,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             // Redirect based on user type
             if ($_SESSION['User_type'] === 'Admin') {
->>>>>>> 964dec4e1df03989c9a25e782551f15dec37cfba
                 header("Location: admin_dashboard.php");
             } else {
                 header("Location: client_dashboard.php");
@@ -45,17 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         } else {
             $passwordError = 'Incorrect password.';
-<<<<<<< HEAD
-            $loginFailed = true;
         }
     } else {
         $usernameError = 'Account not found.';
-        $loginFailed = true;
-=======
-        }
-    } else {
-        $usernameError = 'Account not found.';
->>>>>>> 964dec4e1df03989c9a25e782551f15dec37cfba
     }
 }
 ?>
