@@ -5,12 +5,12 @@ body, html {
   height: 100%;
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
 }
 
 body.home-page {
@@ -25,8 +25,12 @@ body.apply-page {
   background-position: center;
 }
 
-.apply {
-  margin-top: 60px;
+h1.apply {
+  padding-top: 68px;
+}
+
+p.apply {
+  padding-bottom: 68px;
 }
 body.default-page {
   background-image: url('1.jpg');
@@ -65,7 +69,9 @@ body.default-page {
   font-size: 1rem;
 }
 
-
+main {
+  flex: 1;
+}
 
 /* ========== LOGIN PAGE ========== */
 .main-content {
@@ -161,6 +167,7 @@ footer {
             display: flex;
             justify-content: space-between;
             padding: 20px;
+            margin-bottom: auto;
         }
 
         .footer-section {
@@ -346,28 +353,57 @@ footer {
 }
 
 .rentals-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  display: flex;
   gap: 30px;
+  justify-content: center;
+}
+
+.equipment-preview {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .rental-card {
-  background: white;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
+  width: 300px;                 /* Fixed width */
+  min-height: 500px;            /* Uniform height */
+  max-height: 550px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
 .rental-card img {
   width: 100%;
-  border-radius: 10px;
-  margin-bottom: 15px;
+  height: 150px;                /* Restrict image height */
+  object-fit: contain;          /* Keep aspect ratio, don't stretch */
+  margin-bottom: 10px;
 }
 
+.card-body {
+  flex: 1;
+  overflow: hidden;
+}
+
+.card-body p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.price {
+  margin-top: auto;
+  font-weight: bold;
+}
+
+.rent-button-wrapper {
+  margin-top: 10px;
+  text-align: center;
+}
 .status-label {
   font-size: 14px;
   font-weight: bold;

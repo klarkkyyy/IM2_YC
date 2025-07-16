@@ -242,7 +242,7 @@ text-decoration: none;
 </head>
 <body>
   <?php include 'navbar.php'; ?>
-
+  <main>
   <div class="projects-main">
     <div class="projects-container">
       <h1>Construction solution <span>for everyone</span></h1>
@@ -337,7 +337,7 @@ text-decoration: none;
       </div>
     </div>
   </div>
-
+  </main>
   <?php include 'footer.php'; ?>
 
   <script>

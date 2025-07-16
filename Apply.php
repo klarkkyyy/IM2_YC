@@ -29,6 +29,18 @@
       color: white;
     }
 
+    .header {
+      background: url('Background.jpg') no-repeat center center/cover;
+      position: relative;
+      height: 40vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
     .header::before {
       content: "";
       position: absolute;
@@ -105,7 +117,6 @@
     .application-form .purpose-buttons button:hover {
       background-color: #003080;
     }
-
     footer {
       background-color: #004AAD;
       color: white;
@@ -165,46 +176,46 @@
 
 
 
-}
-
-.navbar-center {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
 
 
-.rent-button-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.navbar-right {
-  margin-left: auto; /* Pushes it to the right */
-  display: flex;
-  align-items: center;
-  margin-right: 30px;
-}
-
-
-@media (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-      }
-      .application-form .purpose-buttons {
-        flex-direction: column;
-        gap: 1rem;
-      }
+    .navbar-center {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: flex-start;
     }
+
+
+    .rent-button-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .navbar-right {
+      margin-left: auto; /* Pushes it to the right */
+      display: flex;
+      align-items: center;
+      margin-right: 30px;
+    }
+
+
+    @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+        }
+        .application-form .purpose-buttons {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
   </style>
 </head>
 
 <body>
   <?php include 'navbar.php'; ?>
-
+  <main>
   <section class="header">
     <h1 class="apply">Start Your Project or Equipment Rental Today</h1>
     <p class="apply">Ready to bring your plans to life? Submit your application below to start a new construction project or to rent the equipment you need.</p>
@@ -212,6 +223,47 @@
 
   <div class="application-form">
     <h2>Application Form</h2>
+
+<?php
+include 'database.php';
+
+if (isset($_GET['equipment'])) {
+  $equipmentName = $_GET['equipment'];
+
+  $stmt = $conn->prepare("SELECT * FROM equipment WHERE EquipmentName = ?");
+  $stmt->bind_param("s", $equipmentName);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  if ($row = $result->fetch_assoc()) {
+    ?>
+      <div class="equipment-preview">
+        <!-- Equipment card -->
+        <div class="rental-card <?= strtolower($row['Availability']) ?>" style="margin: 20px 0;">
+          <div class="status-label">
+            <span class="dot <?= $row['Availability'] === 'Available' ? 'green' : 'red' ?>"></span> <?= $row['Availability'] ?>
+          </div>
+          <img src="<?= htmlspecialchars($row['ImagePath']) ?>" alt="<?= htmlspecialchars($row['EquipmentName']) ?>" style="width: 100%; height: 150px; object-fit: contain;">
+          <div class="card-body">
+            <h2 class="title" style="text-align: center; color: orange;"><?= htmlspecialchars($row['EquipmentName']) ?></h2>
+            <p><?= nl2br(htmlspecialchars($row['Description'])) ?></p>
+            <p class="price" style="font-weight: bold;">
+              Daily: ₱<?= number_format($row['DailyPrice']) ?><br>
+              Weekly: ₱<?= number_format($row['WeeklyPrice']) ?><br>
+              Monthly: ₱<?= number_format($row['MonthlyPrice']) ?>
+            </p>
+        </div>
+      </div>
+    </div>
+    <?php
+  } else {
+    echo "<p style='color: red;'>Equipment not found.</p>";
+  }
+}
+?>
+  <div class="form-details">
+  
+  </div>
     <form>
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
@@ -231,7 +283,8 @@
       </div>
     </form>
   </div>
-
+    </main>
+  
   <?php include 'footer.php'; ?>
 </body>
 </html>
