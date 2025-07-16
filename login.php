@@ -6,30 +6,38 @@ $passwordError = '';
 $loginFailed = false;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $username = trim($_POST['username']);
-  $password = trim($_POST['password']);
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
-  $query = "SELECT * FROM user WHERE Username = ?";
-  $stmt = mysqli_prepare($conn, $query);
-  mysqli_stmt_bind_param($stmt, "s", $username);
-  mysqli_stmt_execute($stmt);
-  $result = mysqli_stmt_get_result($stmt);
+    $query = "SELECT * FROM user WHERE Username = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
-  if (mysqli_num_rows($result) === 1) {
-  $user = mysqli_fetch_assoc($result);
-  if (password_verify($password, $user['Password'])) {
-    session_start();
-    $_SESSION['UserID'] = $user['UserID'];
-    $_SESSION['Username'] = $user['Username'];
-    header("Location: dashboard.php");
-    exit();
-  } else {
-    $passwordError = 'Incorrect password.';
-  }
-} else {
-  $usernameError = 'Account not found.';
-}
+    if (mysqli_num_rows($result) === 1) {
+        $user = mysqli_fetch_assoc($result);
+        if (password_verify($password, $user['Password'])) {
+            session_start();
+            $_SESSION['user_id'] = $user['UserID'];
+            $_SESSION['username'] = $user['Username'];
+            $_SESSION['user_type'] = strtolower($user['UserType']); // Store as lowercase
 
+            // Redirect based on user type
+            if ($_SESSION['user_type'] === 'admin') {
+                header("Location: admin_dashboard.php");
+            } else {
+                header("Location: client_dashboard.php");
+            }
+            exit();
+        } else {
+            $passwordError = 'Incorrect password.';
+            $loginFailed = true;
+        }
+    } else {
+        $usernameError = 'Account not found.';
+        $loginFailed = true;
+    }
 }
 ?>
 <!DOCTYPE html>
