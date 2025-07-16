@@ -14,7 +14,7 @@
             <br>
             <br>
             <br><br>
-            <p style="text-align: center; font-size: 9px;">NORTH SALT LAKE&emsp;ST. GEORGE/WASHINGTON&emsp;CEDAR CITY&emsp;DIPOLOG,PHILIPPINES</p>
+            <p style="text-align: center; font-size: 9px;">PUNTA&emsp;DIPOLOG CITY&emsp;ZAMBOANGA DEL NORTE&emsp;PHILIPPINES</p>
             <hr style="border-top: 1px solid white;">
             <div style="display: flex; justify-content: center;">
                 <a href="#" style="color: white; text-decoration: none; margin-right: 20px; font-size: 11px;">PRIVACY POLICY</a>
