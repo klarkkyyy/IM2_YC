@@ -1,8 +1,12 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['user_id'])) {
-  header("Location: Index.php");
-  exit();
+    header("Location: login.php");
+    exit();
 }
-echo "Welcome, " . $_SESSION['username'];
+
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
+
+echo "Welcome, " . htmlspecialchars($username);
 ?>
