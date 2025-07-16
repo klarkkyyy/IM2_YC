@@ -10,8 +10,9 @@
     <?php include 'navbar.php'; ?>
 
     <section class="hero">
-        <h1>Welcome to Yosech Construction</h1>
-        <p>Yosech Construction is a trusted construction firm based in Dipolog City, delivering high-quality road infrastructure, residential and commercial buildings, flood control <br>projects, and reliable equipment rentals. With decades of experience, we blend traditional craftsmanship with modern techniques to create structures that stand the test <br>of time while embracing sustainability and cultural authenticity.</p>
+        <h1 class="index">Welcome to Yosech Construction</h1>
+        <p class="index">Yosech Construction is a trusted construction firm based in Dipolog City, delivering high-quality road infrastructure, residential and commercial buildings, flood control <br>projects, and reliable equipment rentals. With decades of experience, we blend traditional craftsmanship with modern techniques to create structures that stand the test <br>of time while embracing sustainability and cultural authenticity.</p>
+        <a href="rentals.php" class="rentals-button">Browse Rentals</a>
     </section>
 
     <section class="content">
@@ -62,15 +63,15 @@
 
     <section class="additional-content">
         <div>
-            <h3 class="highlighted-title">Construction</h3>
+            <h3 class="highlighted-title" style="text-align: center;">Construction</h3>
             <p class="white-paragraph">Our project managers and superintendents are very experienced in completing highly specialized, multi-faceted projects. Their ability to foresee and therefore prevent problems is invaluable. Construction mastery aids in the design process of the CM/GC and Design-Build delivery methods because we know what is feasible and have a large repertoire of means and methods. Yoztech is uniquely qualified in tilt-up concrete construction. We know what is feasible and we have the means and methods to accomplish the goal.</p>
         </div>
         <div>
-            <h3 class="highlighted-title">Engineering</h3>
+            <h3 class="highlighted-title" style="text-align: center;">Engineering</h3>
             <p class="white-paragraph">Our engineers and designers are qualified to solve the challenges presented in today's design and construction market. We have experience in a variety of projects and delivery methods. We know what is feasible and we have the means and methods to accomplish the goal.</p>
         </div>
         <div>
-            <h3 class="highlighted-title">Innovation</h3>
+            <h3 class="highlighted-title" style="text-align: center;">Innovation</h3>
             <p class="white-paragraph">We are committed to continually learning and improving. This pursuit of knowledge drives our team to innovative solutions. We are innovative and will draw on all of our resources to find solutions to meet owner needs, even if that means inventing something new.</p>
         </div>
     </section>

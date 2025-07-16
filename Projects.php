@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects - Construction Solution</title>
   <style>
-
-
   body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -31,48 +29,52 @@
   z-index: -1;
 }
 
-      
-    
+ .navbar {
+    background-color: #004AAD;
+    padding: 1.25rem 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 40px;
 
-    .navbar {
-            background-color: #004AAD;
-            padding: 1.25rem 0;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            padding-left: 40px;
+}
 
-        }
+.navbar-center {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
 
-        .navbar-center {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
 
-    .logo-centered {
-      height: 35px; 
-    }
+.logo-centered {
+height: 30px; 
+}
 
-    .nav-links {
-      display: flex;
-      gap: 2.0rem;
-      flex-wrap: wrap;
-    }
+.nav-links {
+display: flex;
+gap: 2.0rem;
+flex-wrap: wrap;
+}
 
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-    }
+.nav-links a {
+color: white;
+text-decoration: none;
+font-weight: bold;
+font-size: 1rem;
+}
 
-    .nav-links a:hover {
-      text-decoration: underline;
-    }
+.nav-links a:hover {
+text-decoration: none;
+}
 
+.navbar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
     footer {
       background-color: #004AAD;
       color: white;

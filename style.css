@@ -25,6 +25,9 @@ body.apply-page {
   background-position: center;
 }
 
+.apply {
+  margin-top: 60px;
+}
 body.default-page {
   background-image: url('1.jpg');
   background-size: cover;
@@ -34,9 +37,8 @@ body.default-page {
 /* ========== NAVBAR ========== */
 .navbar {
   background-color: #004AAD;
-  padding: 1rem 0;
+  padding: 1.25rem 2rem;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
@@ -53,6 +55,7 @@ body.default-page {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  text-decoration: none;
 }
 
 .nav-links a {
@@ -62,9 +65,6 @@ body.default-page {
   font-size: 1rem;
 }
 
-.nav-links a:hover {
-  text-decoration: underline;
-}
 
 
 /* ========== LOGIN PAGE ========== */
@@ -120,7 +120,7 @@ select {
 }
 
 .login-container button,
-button {
+button, .guest-button {
   background-color: #004AAD;
   color: white;
   border: none;
@@ -129,12 +129,30 @@ button {
   font-size: 1rem;
   cursor: pointer;
   width: 100%;
+  text-decoration: none;
 }
 
-.login-container button:hover,
-button:hover {
-  background-color: #003080;
+.rentals-button {
+  background-color: #004AAD;
+  color: white;
+  border: none;
+  padding: 1.25rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 10%;
+  z-index: 3;
+  text-decoration: none;
+  font-weight: bold;
 }
+
+button:hover,
+.guest-button:hover,
+.login-container button:hover,
+.rentals-button:hover{
+  background-color: #00307d;
+}
+
 
 /* ========== FOOTER ========== */
 footer {
@@ -479,7 +497,7 @@ font-size: 1rem;
 }
 
 .nav-links a:hover {
-text-decoration: underline;
+text-decoration: none;
 }
 
 .hero {
@@ -492,6 +510,8 @@ text-decoration: underline;
     align-items: center;
     text-align: center;
     color: white;
+    padding: 60px;
+    z-index: 2;
 }
 
 .hero img {
@@ -640,9 +660,11 @@ text-decoration: underline;
     border-radius: 5px;
 }
 
-.additional-content h3 {
+.highlighted-title {
     font-size: 2.5rem;
-    color: #D2153D;
+    color: #ff8800;
+    text-align: center;
+    padding-left: 20px;
 }
 
 .additional-content p {
@@ -698,10 +720,12 @@ footer {
 @media (min-width: 768px) {
     .hero h1 {
         font-size: 6rem;
+        padding-top: 70px;
     }
 
     .hero p {
         font-size: 1.5rem;
+        padding-bottom: 30px;
     }
 
     .navbar .left-links a,
@@ -709,3 +733,132 @@ footer {
         margin: 0 0.5rem;
     }
 }
+
+.rent-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.navbar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.projects-main {
+      background-color: transparent;
+      padding: 60px 20px;
+    }
+
+    .projects-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .projects-container h1 {
+      font-size: 3rem;
+      color: #004AAD;
+      margin-bottom: 10px;
+    }
+
+    .projects-container h1 span {
+      display: block;
+      font-weight: normal;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .projects-container .subtitle {
+      max-width: 800px;
+      margin: 0 auto 50px;
+      font-size: 1rem;
+      color: #000000;
+    }
+
+    .project-block {
+      background: #ffffffcc;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    }
+
+    .project-block.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .project-text {
+      flex: 1 1 300px;
+      padding: 30px;
+      text-align: left;
+    }
+
+    .project-text h2 {
+      color: #004AAD;
+      margin-bottom: 10px;
+    }
+
+    .project-text p {
+      color: #333;
+      font-size: 1rem;
+    }
+
+    .project-image {
+      flex: 1 1 300px;
+      min-width: 300px;
+      max-height: 250px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .pagination button {
+      background-color: #004AAD;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .pagination button.active {
+      background-color: #00307d;
+    }
+
+    .pagination button:disabled {
+      background-color: #888;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 768px) {
+      .projects-container h1 {
+        font-size: 2.2rem;
+      }
+      .project-block {
+        flex-direction: column;
+      }
+      .project-image {
+        min-width: 100%;
+      }
+    }
+

@@ -5,212 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rentals - Construction Solution</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f0f0f0;
-    }
-
-    .navbar {
-            background-color: #004AAD;
-            padding: 1.25rem 0;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            padding-left: 40px;
-
-        }
-
-        .navbar-center {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
-
-    .logo-centered {
-      height: 35px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.0rem;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    .nav-links a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      background-color: #004AAD;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      padding: 20px;
-    }
-
-    .footer-section {
-      flex: 1;
-      padding: 10px;
-    }
-
-    .footer-section h3 {
-      margin-top: 0;
-      font-size: 1.2em;
-    }
-
-    .footer-section p {
-      margin: 5px 0;
-    }
-
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-    }
-
-    .social-icons a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-    }
-
-    .forlogo {
-      display: flex;
-      height: 120px;
-      width: 100px;
-    }
-
-    .social-icons a img {
-      height: 20px;
-      margin-right: 5px;
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-        cursor: pointer;
-      }
-
-      .left-links, .right-links {
-        display: none;
-        flex-direction: column;
-      }
-
-      .left-links a, .right-links a {
-        margin: 10px 0;
-      }
-
-      footer {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .footer-section {
-        margin-bottom: 20px;
-      }
-    }
-
-    .rentals-main {
-      background-color: #e0e0e0;
-      padding: 50px 0;
-    }
-
-    .rentals-content {
-      max-width: 1200px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .rentals-content h1 {
-      font-size: 48px;
-      margin-bottom: 30px;
-      color: #004AAD;
-    }
-
-    .rentals-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-    }
-
-    .rental-card {
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .rental-card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .status-label {
-      font-size: 14px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 8px;
-    }
-
-    .green {
-      background-color: #28a745;
-    }
-
-    .red {
-      background-color: #dc3545;
-    }
-
-    .card-body {
-      text-align: left;
-    }
-
-    .title {
-      margin: 0 0 10px;
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .backhoe { color: #8B9EFF; }
-    .dumptruck { color: #FF8A00; }
-    .roadroller { color: #F44336; }
-    .transit { color: #FF4081; }
-    .cargo { color: #4CAF50; }
-    .grader { color: #E91E63; }
-
-    .price {
-      margin-top: 10px;
-      font-weight: bold;
-      color: #333;
-    }
-  </style>
+  
 </head>
 <body>
   <?php include 'navbar.php'; ?>
@@ -229,11 +24,21 @@
           <img src="backhoe-removebg-preview.png" alt="Backhoe">
           <div class="card-body">
             <h2 class="title backhoe">Backhoe</h2>
-            <p>A versatile digging and loading machine with a front loader and rear excavator arm. Ideal for trenching, material handling, and small demolition tasks.</p>
-            <p class="price">Daily: ₱6,000<br>Weekly: ₱36,000<br>Monthly: ₱130,000</p>
-            <a href="apply.php?equipment=Backhoe" class="rent-button">Rent Now</a>
+              <p>A versatile digging and loading machine with a front loader and rear excavator arm. Ideal for trenching, material handling, and small demolition tasks.</p>
+              <p class="price">Daily: ₱6,000<br>Weekly: ₱36,000<br>Monthly: ₱130,000</p>
+          </div>
+          <div class="rent-button-wrapper">
+                <a href="apply.php?equipment=Backhoe" class="rent-button">Rent Now</a>
           </div>
         </div>
+
+
+
+
+
+
+
+
 
         <div class="rental-card available">
           <div class="status-label">
@@ -244,6 +49,9 @@
             <h2 class="title dumptruck">Dumptruck</h2>
             <p>Used for transporting loose materials like sand, gravel, or demolition waste. Comes in 10-wheeler and 6-wheeler options.</p>
             <p class="price">Daily: ₱5,000<br>Weekly: ₱30,000<br>Monthly: ₱110,000</p>
+          </div>
+          <div class="rent-button-wrapper">
+                <a href="apply.php?equipment=Backhoe" class="rent-button">Rent Now</a>
           </div>
         </div>
 
@@ -257,6 +65,9 @@
             <p>Compacts soil, gravel, asphalt, and other materials to create a smooth, level surface. Commonly used in road construction.</p>
             <p class="price">Daily: ₱4,500<br>Weekly: ₱27,000<br>Monthly: ₱100,000</p>
           </div>
+          <div class="rent-button-wrapper">
+                <a href="apply.php?equipment=Backhoe" class="rent-button">Rent Now</a>
+          </div>
         </div>
 
         <div class="rental-card available">
@@ -268,6 +79,9 @@
             <h2 class="title transit">Transit Mixer</h2>
             <p>A truck used for transporting and mixing concrete. Keeps concrete in motion to prevent setting during transit.</p>
             <p class="price">Daily: ₱3,500<br>Weekly: ₱6,000<br>Monthly: ₱120,000</p>
+          </div>
+          <div class="rent-button-wrapper">
+                <a href="apply.php?equipment=Backhoe" class="rent-button">Rent Now</a>
           </div>
         </div>
 
@@ -281,6 +95,9 @@
             <p>Designed to transport goods, equipment, and supplies. Comes with either a closed van or open-bed configuration.</p>
             <p class="price">Daily: ₱4,000<br>Weekly: ₱25,000<br>Monthly: ₱90,000</p>
           </div>
+          <div class="rent-button-wrapper">
+                <a href="apply.php?equipment=Backhoe" class="rent-button">Rent Now</a>
+          </div>
         </div>
 
         <div class="rental-card unavailable">
@@ -292,6 +109,9 @@
             <h2 class="title grader">Grader</h2>
             <p>A long-blade machine used to level and smooth roads or land surfaces. Essential for road preparation and maintenance.</p>
             <p class="price">Daily: ₱6,000<br>Weekly: ₱36,000<br>Monthly: ₱130,000</p>
+          </div>
+          <div class="rent-button-wrapper">
+                <a href="apply.php?equipment=Backhoe" class="rent-button">Rent Now</a>
           </div>
         </div>
       </div>

@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Construction Solutions - Apply Now</title>
-  
+  <link rel="stylesheet" href="style.css" />
   <style>
+
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -13,45 +15,6 @@
       box-sizing: border-box;
       background-color: #f4f4f4;
     }
-
-    .navbar {
-            background-color: #004AAD;
-            padding: 1.25rem 0;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            padding-left: 40px;
-
-        }
-
-        .navbar-center {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
-
-    .logo-centered {
-      height: 35px;
-    }
-
-    .nav-links {
-        display: flex;
-        gap: 2.0rem;
-        flex-wrap: wrap;
-        }
-
-        .nav-links a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1rem;
-        }
-
-        .nav-links a:hover {
-        text-decoration: underline;
-        }
 
 
     .header {
@@ -199,6 +162,43 @@
         gap: 1rem;
       }
     }
+
+
+
+}
+
+.navbar-center {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+
+.rent-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.navbar-right {
+  margin-left: auto; /* Pushes it to the right */
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+
+@media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+      }
+      .application-form .purpose-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
   </style>
 </head>
 
@@ -206,8 +206,8 @@
   <?php include 'navbar.php'; ?>
 
   <section class="header">
-    <h1>Start Your Project or Equipment Rental Today</h1>
-    <p>Ready to bring your plans to life? Submit your application below to start a new construction project or to rent the equipment you need.</p>
+    <h1 class="apply">Start Your Project or Equipment Rental Today</h1>
+    <p class="apply">Ready to bring your plans to life? Submit your application below to start a new construction project or to rent the equipment you need.</p>
   </section>
 
   <div class="application-form">

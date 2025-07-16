@@ -202,11 +202,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <button type="submit">Login</button>
         <p style="margin-top: 20px; font-size: 14px; color: #333;">
-          Don't have an account yet?
-          <a href="register.php" style="color: #004AAD; text-decoration: underline; font-weight: bold;">
-            Register Here
-          </a>
-        </p>
+            Don't have an account yet?
+            <a href="register.php" style="color: #004AAD; text-decoration: underline; font-weight: bold;">
+              Register Here
+            </a>
+          </p>
+          <div class="or">
+            <p style="margin-top: 20px; font-size: 14px; color: #333; font-weight: bold;">or</p>
+          </div>
+            
+
+          <p style="margin-top: 10px; font-size: 14px; color: #333;">
+            <br>
+            <a href="index.php" class="guest-button">Continue as Guest</a>
+          </p>
       </form>
     </div>
   </div>
