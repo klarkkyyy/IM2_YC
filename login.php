@@ -3,7 +3,6 @@ require 'database.php';
 
 $usernameError = '';
 $passwordError = '';
-$loginFailed = false;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
@@ -14,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_stmt_bind_param($stmt, "s", $username);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
+<<<<<<< HEAD
 
     if (mysqli_num_rows($result) === 1) {
         $user = mysqli_fetch_assoc($result);
@@ -25,6 +25,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Redirect based on user type
             if ($_SESSION['user_type'] === 'admin') {
+=======
+
+    if (mysqli_num_rows($result) === 1) {
+        $user = mysqli_fetch_assoc($result);
+        if (password_verify($password, $user['Password'])) {
+            session_start();
+            $_SESSION['User_id'] = $user['UserID'];
+            $_SESSION['Username'] = $user['Username'];
+            $_SESSION['User_type'] = $user['UserType']; // This matches your database enum
+            
+            // Redirect based on user type
+            if ($_SESSION['User_type'] === 'Admin') {
+>>>>>>> 964dec4e1df03989c9a25e782551f15dec37cfba
                 header("Location: admin_dashboard.php");
             } else {
                 header("Location: client_dashboard.php");
@@ -32,13 +45,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         } else {
             $passwordError = 'Incorrect password.';
+<<<<<<< HEAD
             $loginFailed = true;
         }
     } else {
         $usernameError = 'Account not found.';
         $loginFailed = true;
+=======
+        }
+    } else {
+        $usernameError = 'Account not found.';
+>>>>>>> 964dec4e1df03989c9a25e782551f15dec37cfba
     }
 }
+?>
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -194,37 +214,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="login-container">
       <h2>Login</h2>
       <form action="login.php" method="POST">
-        <div class="input-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username" required />
-          <?php if (!empty($usernameError)): ?>
-            <div class="error"><?php echo $usernameError; ?></div>
-          <?php endif; ?>
-        </div>
-        <div class="input-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" required />
-          <?php if (!empty($passwordError)): ?>
-            <div class="error"><?php echo $passwordError; ?></div>
-          <?php endif; ?>
-        </div>
-        <button type="submit">Login</button>
-        <p style="margin-top: 20px; font-size: 14px; color: #333;">
-            Don't have an account yet?
-            <a href="register.php" style="color: #004AAD; text-decoration: underline; font-weight: bold;">
-              Register Here
-            </a>
-          </p>
-          <div class="or">
-            <p style="margin-top: 20px; font-size: 14px; color: #333; font-weight: bold;">or</p>
-          </div>
-            
-
-          <p style="margin-top: 10px; font-size: 14px; color: #333;">
-            <br>
-            <a href="index.php" class="guest-button">Continue as Guest</a>
-          </p>
-      </form>
+    <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"/>
+        <?php if (!empty($usernameError)): ?>
+            <div class="error"><?= htmlspecialchars($usernameError) ?></div>
+        <?php endif; ?>
+    </div>
+    <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+        <?php if (!empty($passwordError)): ?>
+            <div class="error"><?= htmlspecialchars($passwordError) ?></div>
+        <?php endif; ?>
+    </div>
+    <button type="submit">Login</button>
+</form>
     </div>
   </div>
 
