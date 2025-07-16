@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['UserID']) || $_SESSION['UserType'] !== 'client') {
+if (!isset($_SESSION['User_id']) || $_SESSION['User_type'] !== 'Client') {
     header("Location: login.php");
     exit();
 }

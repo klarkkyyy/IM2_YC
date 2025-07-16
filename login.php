@@ -3,7 +3,6 @@ require 'database.php';
 
 $usernameError = '';
 $passwordError = '';
-$loginFailed = false;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
@@ -19,12 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user = mysqli_fetch_assoc($result);
         if (password_verify($password, $user['Password'])) {
             session_start();
-            $_SESSION['user_id'] = $user['UserID'];
-            $_SESSION['username'] = $user['Username'];
-            $_SESSION['user_type'] = strtolower($user['UserType']); // Store as lowercase
+            $_SESSION['User_id'] = $user['UserID'];
+            $_SESSION['Username'] = $user['Username'];
+            $_SESSION['User_type'] = $user['UserType']; // This matches your database enum
             
             // Redirect based on user type
-            if ($_SESSION['user_type'] === 'admin') {
+            if ($_SESSION['User_type'] === 'Admin') {
                 header("Location: admin_dashboard.php");
             } else {
                 header("Location: client_dashboard.php");
@@ -32,13 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         } else {
             $passwordError = 'Incorrect password.';
-            $loginFailed = true;
         }
     } else {
         $usernameError = 'Account not found.';
-        $loginFailed = true;
     }
 }
+?>
 ?>
 <!DOCTYPE html>
 <html lang="en">
