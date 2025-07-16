@@ -46,14 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       height: 100%;
     }
     body {
-      font-family: Arial, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background-color: #f0f0f0;
-      background-image: url('1.jpg');
-      background-size: cover;
-      background-position: center;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: url('Background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
     }
     .navbar {
       background-color: #004AAD;
