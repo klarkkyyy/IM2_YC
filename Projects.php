@@ -330,10 +330,66 @@ text-decoration: none;
         </div>
       </div>
 
+      <!-- PAGE 4 (New) -->
+      <div class="projects-page" id="page-4" style="display:none;">
+        <div class="project-block">
+          <div class="project-text">
+            <h2>Residential Complex Development</h2>
+            <p><strong>Start Date:</strong> January 5, 2023<br>
+               <strong>Completion Date:</strong> December 20, 2024</p>
+            <p>Construction of a multi-unit residential complex featuring modern apartments, green spaces, and recreational facilities. Designed for sustainable living.</p>
+          </div>
+          <div class="project-image">
+            <img src="project1.jpg" alt="Residential Complex Development">
+          </div>
+        </div>
+
+        <div class="project-block reverse">
+          <div class="project-text">
+            <h2>Commercial Office Tower</h2>
+            <p><strong>Start Date:</strong> April 1, 2024<br>
+               <strong>Completion Date:</strong> March 30, 2026</p>
+            <p>Development of a high-rise commercial office tower with state-of-the-art facilities, smart building technology, and panoramic city views.</p>
+          </div>
+          <div class="project-image">
+            <img src="project2.jpg" alt="Commercial Office Tower">
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGE 5 (New) -->
+      <div class="projects-page" id="page-5" style="display:none;">
+        <div class="project-block">
+          <div class="project-text">
+            <h2>Coastal Erosion Protection</h2>
+            <p><strong>Start Date:</strong> June 1, 2024<br>
+               <strong>Completion Date:</strong> February 28, 2025</p>
+            <p>Implementation of coastal defense structures, including seawalls and breakwaters, to protect vulnerable coastlines from erosion and storm surges.</p>
+          </div>
+          <div class="project-image">
+            <img src="project3.jpg" alt="Coastal Erosion Protection">
+          </div>
+        </div>
+
+        <div class="project-block reverse">
+          <div class="project-text">
+            <h2>Renewable Energy Plant Construction</h2>
+            <p><strong>Start Date:</strong> September 1, 2023<br>
+               <strong>Completion Date:</strong> August 31, 2025</p>
+            <p>Building a new solar power plant, including solar panel installation, inverter stations, and grid connection infrastructure, contributing to sustainable energy.</p>
+          </div>
+          <div class="project-image">
+            <img src="project4.jpg" alt="Renewable Energy Plant Construction">
+          </div>
+        </div>
+      </div>
+
       <div class="pagination">
         <button data-page="1" class="active">1</button>
         <button data-page="2">2</button>
         <button data-page="3">3</button>
+        <button data-page="4">4</button>
+        <button data-page="5">5</button>
       </div>
     </div>
   </div>
@@ -365,11 +421,12 @@ text-decoration: none;
       });
     });
 
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      let nextPage = currentPage + 1;
-      if (nextPage > totalPages) nextPage = 1;
-      showPage(nextPage);
-    });
+    // Removed the 'nextBtn' event listener as it's not present in the HTML
+    // document.getElementById('nextBtn').addEventListener('click', () => {
+    //   let nextPage = currentPage + 1;
+    //   if (nextPage > totalPages) nextPage = 1;
+    //   showPage(nextPage);
+    // });
 
     
     showPage(currentPage);
