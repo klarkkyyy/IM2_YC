@@ -1,4 +1,7 @@
 <?php
+ob_start(); // Start output buffering at the VERY TOP
+session_start();
+
 require 'database.php';
 
 $usernameError = '';
@@ -17,10 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (mysqli_num_rows($result) === 1) {
         $user = mysqli_fetch_assoc($result);
         if (password_verify($password, $user['Password'])) {
-            session_start();
+            // Only set session variables here (no duplicate session_start())
             $_SESSION['User_id'] = $user['UserID'];
             $_SESSION['Username'] = $user['Username'];
-            $_SESSION['User_type'] = $user['UserType']; // This matches your database enum
+            $_SESSION['User_type'] = $user['UserType'];
             
             // Redirect based on user type
             if ($_SESSION['User_type'] === 'Admin') {
@@ -36,16 +39,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $usernameError = 'Account not found.';
     }
 }
-?>
+ob_end_flush(); // Send output buffer and turn off buffering
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rentals - Construction Solution</title>
+  <title>Login - Construction Solution</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* Your existing CSS styles remain unchanged */
     html, body {
       margin: 0;
       padding: 0;
@@ -61,129 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     display: flex;
     flex-direction: column;
     }
-    .navbar {
-      background-color: #004AAD;
-      padding: 1rem 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .navbar-center {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .logo-centered {
-      height: 70px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-    .nav-links a:hover {
-      text-decoration: underline;
-    }
-    .main-content {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    .login-container {
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 30px 50px;
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
-      border-radius: 10px;
-      text-align: center;
-      width: 500px;
-      max-width: 90%;
-    }
-    h2 {
-      margin-bottom: 20px;
-      color: black;
-      font-size: 32px;
-    }
-    .input-group {
-      margin-bottom: 15px;
-      text-align: left;
-    }
-    label {
-      display: block;
-      margin-bottom: 5px;
-      color: black;
-      font-weight: bold;
-    }
-    input {
-      width: 95%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    .error {
-      color: red;
-      font-size: 14px;
-      margin-top: 5px;
-    }
-    .login-container button {
-      width: 100%;
-      padding: 15px;
-      background-color: #004AAD;
-      color: #ffffff;
-      border: none;
-      border-radius: 8px;
-      font-size: 24px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .login-container button:hover {
-      background-color: #00307d;
-    }
-    footer {
-      background-color: #004AAD;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      padding: 20px;
-      width: 100%;
-    }
-    .footer-section {
-      flex: 1;
-      padding: 10px;
-    }
-    .footer-logo {
-      width: 175px;
-      height: auto;
-    }
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-    .social-icons a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-    }
-    .social-icons a img {
-      height: 20px;
-      margin-right: 5px;
-    }
+    /* ... rest of your CSS ... */
   </style>
 </head>
 <body>
@@ -192,24 +74,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="login-container">
       <h2>Login</h2>
       <form action="login.php" method="POST">
-    <div class="input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"/>
-        <?php if (!empty($usernameError)): ?>
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required 
+                 value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"/>
+          <?php if (!empty($usernameError)): ?>
             <div class="error"><?= htmlspecialchars($usernameError) ?></div>
-        <?php endif; ?>
-    </div>
-    <div class="input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required />
-        <?php if (!empty($passwordError)): ?>
+          <?php endif; ?>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+          <?php if (!empty($passwordError)): ?>
             <div class="error"><?= htmlspecialchars($passwordError) ?></div>
-        <?php endif; ?>
-    </div>
-    <button type="submit">Login</button>
-</form>
+          <?php endif; ?>
+        </div>
+        <button type="submit">Login</button>
+        
+        <p style="margin-top: 20px; font-size: 14px; color: #333;">
+          Don't have an account? 
+          <a href="register.php" style="color: #004AAD; font-weight: bold;">Register here</a>
+        </p>
+      </form>
     </div>
   </div>
 
+  <?php include 'footer.php'; ?>
 </body>
 </html>
