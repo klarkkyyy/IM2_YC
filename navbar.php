@@ -1,3 +1,7 @@
+<?php
+session_start();
+$isClient = isset($_SESSION['User_id']) && $_SESSION['User_type'] === 'Client';
+?>
 
 <nav class="navbar">
     <div class="navbar-center">
@@ -13,7 +17,12 @@
     <div class="navbar-right">
         <div class="nav-links">
             <a href="Contact.php">Contacts</a>
-            <a href="login.php">Login</a>
+
+            <?php if ($isClient): ?>
+                <a href="client_profile.php">My Profile</a>
+            <?php else: ?>
+                <a href="login.php">Login</a>
+            <?php endif; ?>
         </div>
     </div>
 </nav>

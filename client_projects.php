@@ -28,10 +28,10 @@ $result = $stmt->get_result();
 <head>
     <meta charset="UTF-8">
     <title>Client Projects</title>
-    <link rel="stylesheet" href="client_interface.css"> <!-- ✅ Link to CSS -->
+    <link rel="stylesheet" href="client_interface.css"> 
 </head>
 <body>
-    <?php include 'client_navbar.php'; ?> <!-- ✅ Optional if you have a navbar -->
+    <?php include 'client_navbar.php'; ?> 
 
     <section class="content">
         <h1>Your Projects</h1>

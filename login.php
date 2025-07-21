@@ -4,7 +4,19 @@ require 'database.php';
 $usernameError = '';
 $passwordError = '';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+session_start();
+
+// Guest login check
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['guest_login'])) {
+    $_SESSION['User_id'] = 0;
+    $_SESSION['Username'] = 'Guest';
+    $_SESSION['User_type'] = 'Client';
+    header("Location: client_home.php");
+    exit();
+}
+
+// Normal login check
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
@@ -17,16 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (mysqli_num_rows($result) === 1) {
         $user = mysqli_fetch_assoc($result);
         if (password_verify($password, $user['Password'])) {
-            session_start();
             $_SESSION['User_id'] = $user['UserID'];
             $_SESSION['Username'] = $user['Username'];
             $_SESSION['User_type'] = $user['UserType'];
             
-            // Redirect based on user type
             if ($_SESSION['User_type'] === 'Admin') {
                 header("Location: admin_dashboard.php");
             } else {
-                header("Location: client_home.php");  // Changed to client_home.php
+                header("Location: client_home.php");
             }
             exit();
         } else {
@@ -37,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,13 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       padding: 0;
       display: flex;
       flex-direction: column;
-    }
-    .navbar {
-      background-color: #004AAD;
-      padding: 1rem 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
     .main-content {
       flex: 1;
@@ -125,6 +129,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     .login-container button:hover {
       background-color: #00307d;
     }
+    .guest-btn {
+      margin-top: 15px;
+      background-color: #666;
+    }
+    .guest-btn:hover {
+      background-color: #444;
+    }
   </style>
 </head>
 <body>
@@ -146,7 +157,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="error"><?= htmlspecialchars($passwordError) ?></div>
           <?php endif; ?>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" name="login">Login</button>
+      </form>
+      
+      <form action="login.php" method="POST">
+        <button type="submit" name="guest_login" class="guest-btn">Login as Guest</button>
       </form>
     </div>
   </div>
