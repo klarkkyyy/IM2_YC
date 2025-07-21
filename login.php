@@ -20,13 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             session_start();
             $_SESSION['User_id'] = $user['UserID'];
             $_SESSION['Username'] = $user['Username'];
-            $_SESSION['User_type'] = $user['UserType']; // This matches your database enum
+            $_SESSION['User_type'] = $user['UserType'];
             
             // Redirect based on user type
             if ($_SESSION['User_type'] === 'Admin') {
                 header("Location: admin_dashboard.php");
             } else {
-                header("Location: client_dashboard.php");
+                header("Location: client_home.php");  // Changed to client_home.php
             }
             exit();
         } else {
@@ -37,13 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rentals - Construction Solution</title>
+  <title>Login - Construction Solution</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     html, body {
@@ -52,14 +51,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       height: 100%;
     }
     body {
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    background: url('Background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      background: url('Background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
     }
     .navbar {
       background-color: #004AAD;
@@ -67,30 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-    .navbar-center {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .logo-centered {
-      height: 70px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-    .nav-links a:hover {
-      text-decoration: underline;
     }
     .main-content {
       flex: 1;
@@ -150,66 +125,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     .login-container button:hover {
       background-color: #00307d;
     }
-    footer {
-      background-color: #004AAD;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      padding: 20px;
-      width: 100%;
-    }
-    .footer-section {
-      flex: 1;
-      padding: 10px;
-    }
-    .footer-logo {
-      width: 175px;
-      height: auto;
-    }
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-    .social-icons a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-    }
-    .social-icons a img {
-      height: 20px;
-      margin-right: 5px;
-    }
   </style>
 </head>
 <body>
-
   <div class="main-content">
     <div class="login-container">
       <h2>Login</h2>
       <form action="login.php" method="POST">
-    <div class="input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"/>
-        <?php if (!empty($usernameError)): ?>
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"/>
+          <?php if (!empty($usernameError)): ?>
             <div class="error"><?= htmlspecialchars($usernameError) ?></div>
-        <?php endif; ?>
-    </div>
-    <div class="input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required />
-        <?php if (!empty($passwordError)): ?>
+          <?php endif; ?>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+          <?php if (!empty($passwordError)): ?>
             <div class="error"><?= htmlspecialchars($passwordError) ?></div>
-        <?php endif; ?>
-    </div>
-    <button type="submit">Login</button>
-</form>
+          <?php endif; ?>
+        </div>
+        <button type="submit">Login</button>
+      </form>
     </div>
   </div>
-
 </body>
 </html>
