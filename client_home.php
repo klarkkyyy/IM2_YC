@@ -5,6 +5,9 @@ if (!isset($_SESSION['User_id'])) {
     exit();
 }
 
+include 'client_navbar.php'; ?>
+
+
 require 'database.php';
 if ($conn->connect_error) {
     die("Database connection failed: " . $conn->error);

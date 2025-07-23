@@ -1,8 +1,7 @@
 <?php
 session_start();
-require 'database.php'; // Make sure this file exists in the same folder
+require 'database.php';
 
-// Check if user is logged in
 if (!isset($_SESSION['User_id'])) {
     header("Location: login.php");
     exit();
@@ -10,15 +9,26 @@ if (!isset($_SESSION['User_id'])) {
 
 $userId = $_SESSION['User_id'];
 
-// Fetch projects assigned to this user
-$sql = "SELECT * FROM project WHERE ApplicationID IN (
-            SELECT ApplicationID 
-            FROM application 
-            WHERE ClientID = (SELECT ClientID FROM client WHERE UserID = ?)
-        )";
+$stmt = $conn->prepare("SELECT ClientID FROM client WHERE UserID = ?");
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$stmt->bind_result($clientId);
+
+$hasClient = $stmt->fetch();
+$stmt->close();
+
+if (!$hasClient) {
+    echo "<p style='color:red; text-align:center;'>No client found for this user ID. Please contact admin.</p>";
+    $clientId = null;  // prevent further errors
+}
+
+$sql = "SELECT p.ProjectID, p.Status, p.StartDate, p.EndDate
+        FROM project p
+        INNER JOIN application a ON p.ApplicationID = a.ApplicationID
+        INNER JOIN client c ON a.ClientID = c.ClientID
+        WHERE c.UserID = ?";
 
 $stmt = $conn->prepare($sql);
-
 if (!$stmt) {
     die("SQL Prepare failed: " . $conn->error);
 }
@@ -36,28 +46,28 @@ $result = $stmt->get_result();
     <link rel="stylesheet" href="client_interface.css"> 
 </head>
 <body>
-    <?php include 'client_navbar.php'; ?> 
+    <?php include 'navbar.php'; ?> 
 
     <section class="content">
         <h1>Your Projects</h1>
 
-        <?php if ($result->num_rows > 0): ?>
+        <?php if ($result && $result->num_rows > 0): ?>
             <table>
                 <thead>
                     <tr>
                         <th>Project ID</th>
-                        <th>Project Name</th>
-                        <th>Description</th>
                         <th>Status</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($row['Project_id']); ?></td>
-                            <td><?php echo htmlspecialchars($row['Project_name']); ?></td>
-                            <td><?php echo htmlspecialchars($row['Description']); ?></td>
-                            <td><?php echo htmlspecialchars($row['Status']); ?></td>
+                            <td><?= htmlspecialchars($row['ProjectID']) ?></td>
+                            <td><?= htmlspecialchars($row['Status']) ?></td>
+                            <td><?= htmlspecialchars($row['StartDate']) ?></td>
+                            <td><?= htmlspecialchars($row['EndDate']) ?></td>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>
@@ -65,7 +75,6 @@ $result = $stmt->get_result();
         <?php else: ?>
             <p>No projects found.</p>
         <?php endif; ?>
-
     </section>
 </body>
 </html>
