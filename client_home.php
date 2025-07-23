@@ -103,7 +103,7 @@ try {
       <a href="project.php">Apply</a>
       <a href="contact.php">Contacts</a>
       <a href="client_updates.php"><i class="fa fa-bell fa-icon"></i></a>
-      <a href="logout.php"><i class="fa fa-user fa-icon"></i></a>
+      <a href="client_profile.php" title="My Profile"><i class="fa fa-user fa-icon"></i></a>
     </div>
   </nav>
 

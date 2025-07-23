@@ -11,7 +11,12 @@ if (!isset($_SESSION['User_id'])) {
 $userId = $_SESSION['User_id'];
 
 // Fetch projects assigned to this user
-$sql = "SELECT * FROM projects WHERE User_id = ?";
+$sql = "SELECT * FROM project WHERE ApplicationID IN (
+            SELECT ApplicationID 
+            FROM application 
+            WHERE ClientID = (SELECT ClientID FROM client WHERE UserID = ?)
+        )";
+
 $stmt = $conn->prepare($sql);
 
 if (!$stmt) {

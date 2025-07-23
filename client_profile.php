@@ -9,11 +9,21 @@ if (!isset($_SESSION['User_id']) || $_SESSION['User_type'] !== 'Client') {
 require 'database.php';
 
 $userId = $_SESSION['User_id'];
-$query = "SELECT Full_name, Email, Username, User_type FROM users WHERE User_id = ?";
+$query = "SELECT FullName, Email, Username, UserType FROM user WHERE UserID = ?";
 $stmt = $conn->prepare($query);
+
+if (!$stmt) {
+    die("Prepare failed: " . $conn->error);
+}
+
 $stmt->bind_param("i", $userId);
 $stmt->execute();
 $result = $stmt->get_result();
+
+if (!$result) {
+    die("Execute failed: " . $stmt->error);
+}
+
 $user = $result->fetch_assoc();
 ?>
 
@@ -21,8 +31,7 @@ $user = $result->fetch_assoc();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Profile</title>
+    <title>My Profile</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .profile-container {
@@ -64,11 +73,11 @@ $user = $result->fetch_assoc();
 
     <div class="profile-container">
         <h2>My Profile</h2>
-        <p><strong>Full Name:</strong> <?php echo htmlspecialchars($user['Full_name']); ?></p>
+        <p><strong>Full Name:</strong> <?php echo htmlspecialchars($user['FullName']); ?></p>
         <p><strong>Email Address:</strong> <?php echo htmlspecialchars($user['Email']); ?></p>
         <p><strong>Username:</strong> <?php echo htmlspecialchars($user['Username']); ?></p>
-        <p><strong>User Type:</strong> <?php echo htmlspecialchars($user['User_type']); ?></p>
-        
+        <p><strong>User Type:</strong> <?php echo htmlspecialchars($user['UserType']); ?></p>
+
         <form action="change_password.php" method="get">
             <button type="submit">Change Password</button>
         </form>
