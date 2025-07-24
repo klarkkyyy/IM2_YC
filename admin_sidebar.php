@@ -58,7 +58,7 @@
                     <a href="admin_reports.php">Reports</a>
                 </div>
                 <div class="nav-item">
-                    <a href="logout.php">Logout</a>
+                    <a href="login.php">Logout</a>
                 </div>
             </div>
         </div>

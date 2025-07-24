@@ -43,9 +43,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("sssss", $email, $fullname, $username, $hashed_password, $usertype);
 
         if ($stmt->execute()) {
-            header("Location: login.php");
-            exit();
-        } else {
+    $stmt = $conn->prepare("INSERT INTO user (Email, FullName, Username, Password, UserType) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("sssss", $email, $fullname, $username, $hashed_password, $usertype);
+
+if ($stmt->execute()) {
+    $newUserId = $conn->insert_id;
+
+    // Insert into client table if user is a client
+    if ($usertype === 'Client') {
+        $clientStmt = $conn->prepare("INSERT INTO client (ClientID) VALUES (?)");
+        $clientStmt->bind_param("i", $newUserId);
+        $clientStmt->execute();
+        $clientStmt->close();
+    }
+
+    header("Location: login.php");
+    exit();
+} else {
             $usernameError = "Something went wrong. Please try again.";
         }
 
@@ -68,6 +82,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       color: red;
       font-size: 14px;
       margin-top: 5px;
+    }
+    body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: url('Background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
     }
   </style>
 </head>

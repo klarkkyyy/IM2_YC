@@ -44,7 +44,9 @@ include 'database.php'; // make sure this file contains your DB connection ($con
                 </p>
               </div>
               <div class="rent-button-wrapper">
-                <a href="apply.php?equipment=<?= urlencode($row['EquipmentName']) ?>" class="rent-button">Rent Now</a>
+                <?php if ($row['Availability'] === 'Available'): ?>
+                  <a href="apply.php?equipment=<?= urlencode($row['EquipmentName']) ?>" class="rent-button">Rent Now</a>
+                <?php endif; ?>
               </div>
             </div>
         <?php

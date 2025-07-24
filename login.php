@@ -3,7 +3,7 @@ require 'database.php';
 
 $usernameError = '';
 $passwordError = '';
-
+$loginFailed = true;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
@@ -31,9 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         } else {
             $passwordError = 'Incorrect password.';
+            $loginFailed = true;
+
         }
     } else {
         $usernameError = 'Account not found.';
+        $loginFailed = true;
     }
 }
 ?>
@@ -192,22 +195,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="login-container">
       <h2>Login</h2>
       <form action="login.php" method="POST">
-    <div class="input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"/>
-        <?php if (!empty($usernameError)): ?>
-            <div class="error"><?= htmlspecialchars($usernameError) ?></div>
-        <?php endif; ?>
-    </div>
-    <div class="input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required />
-        <?php if (!empty($passwordError)): ?>
-            <div class="error"><?= htmlspecialchars($passwordError) ?></div>
-        <?php endif; ?>
-    </div>
-    <button type="submit">Login</button>
-</form>
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required />
+          <?php if (!empty($usernameError)): ?>
+            <div class="error"><?php echo $usernameError; ?></div>
+          <?php endif; ?>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+          <?php if (!empty($passwordError)): ?>
+            <div class="error"><?php echo $passwordError; ?></div>
+          <?php endif; ?>
+        </div>
+        <button type="submit">Login</button>
+        <p style="margin-top: 20px; font-size: 14px; color: #333;">
+            Don't have an account yet?
+            <a href="register.php" style="color: #004AAD; text-decoration: underline; font-weight: bold;">
+              Register Here
+            </a>
+          </p>
+          <div class="or">
+            <p style="margin-top: 20px; font-size: 14px; color: #333; font-weight: bold;">or</p>
+          </div>
+            
+
+          <p style="margin-top: 10px; font-size: 14px; color: #333;">
+            <br>
+            <a href="index.php" class="guest-button">Continue as Guest</a>
+          </p>
+      </form>
     </div>
   </div>
 

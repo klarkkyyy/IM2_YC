@@ -4,6 +4,16 @@ if (!isset($_SESSION['User_id']) || $_SESSION['User_type'] !== 'Client') {
     header("Location: login.php");
     exit();
 }
+
+require 'database.php'; if ($conn->connect_error) { die("Database connection failed: " . $conn->error); }
+$welcomeName = $_SESSION['Username'];
+$projectCount = 0;
+$activeRentals = 0;
+
+try {
+} catch (Exception $e) {
+    error_log($e->getMessage());
+}
 ?>
 
 <!DOCTYPE html>
