@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2025 at 01:30 AM
+-- Generation Time: Jul 24, 2025 at 07:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,6 +36,17 @@ CREATE TABLE `application` (
   `Status` enum('Pending','Approved','Denied') DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `application`
+--
+
+INSERT INTO `application` (`ApplicationID`, `ClientID`, `ApplicationType`, `Description`, `SubmissionDate`, `Status`) VALUES
+(5, NULL, '', 'Equipment: Cargo Truck\nName: karl\nEmail: karl@mail.com\nPhone: 12345678911\nCompany: karl', '2025-07-24', 'Pending'),
+(6, NULL, '', 'Equipment: Cargo Truck\nName: karl\nEmail: karl@mail.com\nPhone: 12345678911\nCompany: karl', '2025-07-24', 'Pending'),
+(7, NULL, '', 'Equipment: Cargo Truck\nName: karl\nEmail: k@mail.com\nPhone: 123\nCompany: karl', '2025-07-24', 'Pending'),
+(11, 1, '', 'Equipment: Wheel Loader\nName: jose\nEmail: jose123@mail.com\nPhone: 123\nCompany: comp', '2025-07-24', 'Pending'),
+(12, 1, '', 'Equipment: Backhoe\nName: karl\nEmail: lol@mail.com\nPhone: 1234\nCompany: lol comp', '2025-07-24', 'Pending');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +59,13 @@ CREATE TABLE `client` (
   `CompanyName` varchar(100) DEFAULT NULL,
   `ContactInfo` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`ClientID`, `UserID`, `CompanyName`, `ContactInfo`) VALUES
+(1, 7, 'comp', '123');
 
 -- --------------------------------------------------------
 
@@ -86,10 +104,10 @@ CREATE TABLE `equipment` (
 --
 
 INSERT INTO `equipment` (`EquipmentID`, `EquipmentName`, `RentalStartDate`, `RentalEndDate`, `NeedsOperator`, `Description`, `ImagePath`, `DailyPrice`, `WeeklyPrice`, `MonthlyPrice`, `Availability`) VALUES
-(1, 'Backhoe', NULL, NULL, 0, 'A versatile digging and loading machine with a front loader and rear excavator arm.', 'backhoe-removebg-preview.png', 6000.00, 36000.00, 130000.00, 'Available'),
-(3, 'Cargo Truck', NULL, NULL, 0, 'Designed to transport goods, equipment, and supplies. Comes with either a closed van or open-bed configuration.', 'cargo_truck.png', 4000.00, 25000.00, 90000.00, 'Available'),
+(1, 'Backhoe', NULL, NULL, 0, 'A versatile digging and loading machine with a front loader and rear excavator arm.', 'backhoe-removebg-preview.png', 6000.00, 36000.00, 130000.00, 'Unavailable'),
+(3, 'Cargo Truck', NULL, NULL, 0, 'Designed to transport goods, equipment, and supplies. Comes with either a closed van or open-bed configuration.', 'cargo_truck.png', 4000.00, 25000.00, 90000.00, 'Unavailable'),
 (4, 'Bulldozer', NULL, NULL, 1, 'A heavy-duty machine with a large blade for pushing earth and clearing land.', 'bulldozer.png', 8000.00, 50000.00, 180000.00, 'Unavailable'),
-(6, 'Wheel Loader', NULL, NULL, 0, 'A front-loading machine ideal for moving materials like gravel, soil, or sand.', 'wheel_loader.png', 7000.00, 42000.00, 150000.00, 'Available'),
+(6, 'Wheel Loader', NULL, NULL, 0, 'A front-loading machine ideal for moving materials like gravel, soil, or sand.', 'wheel_loader.png', 7000.00, 42000.00, 150000.00, 'Unavailable'),
 (7, 'Dump Truck', NULL, NULL, 0, 'Used for transporting loose materials like sand, gravel, or demolition waste.', 'dump_truck.png', 6500.00, 39000.00, 140000.00, 'Unavailable'),
 (8, 'Crane Truck', NULL, NULL, 1, 'A vehicle-mounted crane used for lifting and moving heavy materials on-site.', 'crane_truck.png', 9000.00, 54000.00, 200000.00, 'Available'),
 (9, 'Skid Steer Loader', NULL, NULL, 0, 'Compact and highly maneuverable loader for small construction jobs.', 'skid_steer.png', 5000.00, 30000.00, 110000.00, 'Available'),
@@ -211,8 +229,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`UserID`, `Email`, `FullName`, `Username`, `Password`, `UserType`) VALUES
 (7, 'Jose@gmail.com', 'Jose', 'Jose', '$2y$10$qGIIZRvQPNsa8ogKZHnYjOPI1nqWP67hMVn82Hefm6NrgxYV.yaM.', 'Admin'),
-(8, 'yunis@gmail.com', 'Yunis', 'yunis', '$2y$10$qCeE2.arrTInSB1i1Fg7g.Umy0IYF9s5EjgUljqeafND/krgF05rC', 'Client'),
-(9, 'karl123@gmail.com', 'Karl Medina', 'Karl', '$2y$10$S64FDPH.Bp8/abr24ClYver1tboEtveL7PM4U5MniuJ8UDQz3gAR.', 'Client');
+(8, 'yunis@gmail.com', 'nunis', 'yunis', '$2y$10$qCeE2.arrTInSB1i1Fg7g.Umy0IYF9s5EjgUljqeafND/krgF05rC', 'Client'),
+(9, 'karl123@gmail.com', 'Karl Medina', 'Karl', '$2y$10$S64FDPH.Bp8/abr24ClYver1tboEtveL7PM4U5MniuJ8UDQz3gAR.', 'Client'),
+(10, 'yuniz@mail.com', 'yuniz', 'yuniz', '$2y$10$4Y/NcFIrozGOST7PEAJ3.OVaebSKQn9gxfXaG31khnf3LGVPWuN.m', 'Admin');
 
 --
 -- Indexes for dumped tables
@@ -305,13 +324,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `application`
 --
 ALTER TABLE `application`
-  MODIFY `ApplicationID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ApplicationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `ClientID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ClientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -365,7 +384,7 @@ ALTER TABLE `recent_activity`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
